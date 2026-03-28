@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Taiuã Milan — Ortopedista | Cirurgia do Quadril</title>
+  
+  <!-- SEO -->
+  <meta name="description" content="Dr. Taiuã Milan - Ortopedista especialista em Cirurgia do Quadril em Santa Catarina. Artroplastia, Artroscopia, Fraturas. CRM/SC 21639.">
+  
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ═══════════════════════════════════════════════════════════════════
+       CORES - Edite aqui para mudar as cores do site
+       ═══════════════════════════════════════════════════════════════════ */
+    :root {
+      --cor-fundo: #08152a;
+      --cor-fundo-claro: #0c1e3c;
+      --cor-fundo-medio: #163055;
+      --cor-dourado: #c8a05a;
+      --cor-dourado-claro: #e0c07a;
+      --cor-azul: #4a90d9;
+      --cor-azul-claro: #7ab3e8;
+      --cor-texto: #d8e2f4;
+      --cor-texto-claro: #f0f4fb;
+      --cor-texto-suave: #7d90b0;
+      --cor-card: rgba(12,30,60,0.6);
+      --cor-borda: rgba(200,160,90,0.1);
+    }
+
+    /* Reset e Base */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    
+    body {
+      background: var(--cor-fundo);
+      color: var(--cor-texto);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; }
+
+    /* Textura de fundo */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════
+       NAVEGAÇÃO
+       ═══════════════════════════════════════════════════════════════════ */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 5%;
+      background: linear-gradient(180deg, rgba(8,21,42,0.98) 0%, rgba(8,21,42,0) 100%);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--cor-dourado);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--cor-texto-suave);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--cor-dourado-claro); }
+
+    .nav-cta {
+      padding: 0.5rem 1.2rem;
+      border: 1px solid var(--cor-dourado);
+      color: var(--cor-dourado) !important;
+      transition: all 0.3s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--cor-dourado);
+      color: var(--cor-fundo) !important;
+    }
+
+    /* Menu Mobile */
+    .menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--cor-dourado);
+      font-size: 1.5rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════
+       HERO
+       ═══════════════════════════════════════════════════════════════════ */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 0 5%;
+    }
+
+    .hero-slab {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(145deg, var(--cor-fundo-medio) 0%, var(--cor-fundo-claro) 60%, transparent 100%);
+      clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+      opacity: 0.5;
+    }
+
+    .rings {
+      position: absolute;
+      right: 8%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: min(40vw, 480px);
+      height: min(40vw, 480px);
+      z-index: 1;
+    }
+
+    .ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(200,160,90,0.15);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: pulse 5s ease-in-out infinite;
+    }
+
+    .ring:nth-child(1) { width: 100%; height: 100%; }
+    .ring:nth-child(2) { width: 70%; height: 70%; border-color: rgba(74,144,217,0.18); animation-delay: 0.5s; }
+    .ring:nth-child(3) { 
+      width: 42%; 
+      height: 42%; 
+      background: radial-gradient(circle, rgba(74,144,217,0.1) 0%, transparent 70%);
+      border-color: rgba(74,144,217,0.22);
+      animation-delay: 1s;
+    }
+
+    .ring-dot {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--cor-dourado);
+      box-shadow: 0 0 25px var(--cor-dourado), 0 0 50px rgba(200,160,90,0.3);
+      animation: glow 5s ease-in-out infinite;
+    }
+
+    .ring-line {
+      position: absolute;
+      background: rgba(200,160,90,0.1);
+      top: 50%;
+      left: 50%;
+    }
+    .ring-line.h { width: 100%; height: 1px; transform: translate(-50%, -50%); }
+    .ring-line.v { width: 1px; height: 100%; transform: translate(-50%, -50%); }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 1; transform: translate(-50%, -50%) scale(1.02); }
+    }
+
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 20px var(--cor-dourado); }
+      50% { box-shadow: 0 0 40px var(--cor-dourado-claro), 0 0 80px rgba(200,160,90,0.2); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 550px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--cor-dourado);
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--cor-dourado);
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--cor-texto-claro);
+      animation: fadeUp 0.8s ease forwards 0.2s;
+      opacity: 0;
+    }
+
+    h1 .dr { font-weight: 600; }
+    h1 .name { display: block; color: var(--cor-dourado-claro); font-style: italic; }
+
+    .hero-subtitle {
+      display: block;
+      font-size: clamp(0.9rem, 1.6vw, 1.2rem);
+      font-weight: 300;
+      color: var(--cor-azul-claro);
+      letter-spacing: 0.06em;
+      margin-top: 0.5rem;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .hero-crm {
+      display: inline-block;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      color: var(--cor-texto-suave);
+      margin: 0.7rem 0 1.4rem;
+      animation: fadeUp 0.8s ease forwards 0.4s;
+      opacity: 0;
+    }
+
+    .hero-desc {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: var(--cor-texto-suave);
+      max-width: 450px;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.8s ease forwards 0.5s;
+      opacity: 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s ease forwards 0.6s;
+      opacity: 0;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.8rem 1.8rem;
+      background: var(--cor-dourado);
+      color: var(--cor-fundo);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: all 0.3s;
+    }
+
+    .btn-primary:hover {
+      background: var(--cor-dourado-claro);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(200,160,90,0.25);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.8rem 1.8rem;
+      border: 1px solid rgba(200,160,90,0.4);
+      color: var(--cor-dourado);
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: all 0.3s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--cor-dourado);
+      background: rgba(200,160,90,0.05);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Scroll hint */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 5%;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cor-texto-suave);
+      animation: fadeUp 0.8s ease forwards 1s;
+      opacity: 0;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 35px;
+      background: linear-gradient(180deg, transparent, var(--cor-dourado));
+      animation: scrollDrop 1.8s ease-in-out infinite 1.2s;
+    }
+
+    @keyframes scrollDrop {
+      0% { transform: scaleY(0); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: top; }
+      51% { transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════
+       DIVISOR
+       ═══════════════════════════════════════════════════════════════════ */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(200,160,90,0.12), transparent);
+      margin: 0 5%;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════
+       SEÇÕES GERAIS
+       ═══════════════════════════════════════════════════════════════════ */
+    section { padding: 6rem 5%; }
+
+    .section-head { margin-bottom: 3rem; }
+
+    .label {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--cor-dourado);
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 2.8vw, 2.5rem);
+      font-weight: 400;
+      color: var(--cor-texto-claro);
+      line-height: 1.2;
+    }
+
+    h2 em {
+      font-style: italic;
+      color: var(--cor-dourado-claro);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════
+       SOBRE
+       ═══════════════════════════════════════════════════════════════════ */
+    #sobre {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .stats-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(200,160,90,0.08);
+      border: 1px solid rgba(200,160,90,0.1);
+      border-left: 2px solid var(--cor-dourado);
+    }
+
+    .stat {
+      background: var(--cor-fundo);
+      padding: 1.8rem;
+      transition: background 0.3s;
+    }
+
+    .stat:hover { background: var(--cor-fundo-claro); }
+
+    .stat-n {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 600;
+      line-height: 1;
+      color: var(--cor-dourado-claro);
+    }
+
+    .stat-n sup { font-size: 1rem; vertical-align: super; }
+
+    .stat-l {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cor-texto-suave);
+      margin-top: 0.4rem;
+    }
+
+    .sobre-text p {
+      font-size: 0.88rem;
+      line-height: 1.85;
+      color: var(--cor-texto-suave);
+      margin-bottom: 1rem;
+    }
+
+    .sobre-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.4rem;
+    }
+
+    .badge {
+      padding: 0.3rem 0.8rem;
+      border: 1px solid rgba(74,144,217,0.22);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cor-azul-claro);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════
+       TRATAMENTOS (ACCORDION)
+       ═══════════════════════════════════════════════════════════════════ */
+    .trat-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-top: 3rem;
+    }
+
+    .trat-item {
+      background: var(--cor-fundo);
+      border: 1px solid rgba(200,160,90,0.08);
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+
+    .trat-item.open { border-color: rgba(200,160,90,0.3); }
+
+    .trat-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.8rem 2rem;
+      background: none;
+      border: none;
+      text-align: left;
+      transition: background 0.3s;
+      gap: 1rem;
+    }
+
+    .trat-trigger:hover { background: rgba(22,48,85,0.25); }
+    .trat-item.open .trat-trigger { background: rgba(22,48,85,0.4); }
+
+    .trat-trigger-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .trat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: rgba(200,160,90,0.18);
+      min-width: 2.2rem;
+      transition: color 0.3s;
+    }
+
+    .trat-item.open .trat-num { color: rgba(200,160,90,0.45); }
+
+    .trat-label-tag {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cor-azul);
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+
+    .trat-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--cor-texto-claro);
+    }
+
+    .trat-arrow {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+      border: 1px solid rgba(200,160,90,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cor-dourado);
+      transition: all 0.4s;
+    }
+
+    .trat-item.open .trat-arrow {
+      transform: rotate(45deg);
+      background: rgba(200,160,90,0.08);
+      border-color: var(--cor-dourado);
+    }
+
+    .trat-panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .trat-item.open .trat-panel { max-height: 1500px; }
+
+    .trat-panel-inner { padding: 0 2rem 2rem; }
+
+    /* Tabs */
+    .trat-tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid rgba(200,160,90,0.12);
+      margin-bottom: 1.8rem;
+      flex-wrap: wrap;
+    }
+
+    .trat-tab-btn {
+      padding: 0.6rem 1.2rem;
+      background: none;
+      border: none;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cor-texto-suave);
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: all 0.25s;
+      white-space: nowrap;
+    }
+
+    .trat-tab-btn:hover { color: var(--cor-texto); }
+    .trat-tab-btn.active { color: var(--cor-dourado); border-bottom-color: var(--cor-dourado); }
+
+    .trat-tab-panel { display: none; }
+    .trat-tab-panel.active { display: block; }
+
+    .trat-tab-panel h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--cor-texto-claro);
+      margin-bottom: 0.9rem;
+      font-weight: 600;
+    }
+
+    .trat-tab-panel p {
+      font-size: 0.85rem;
+      line-height: 1.85;
+      color: var(--cor-texto-suave);
+      margin-bottom: 0.8rem;
+    }
+
+    .trat-tab-panel ul {
+      list-style: none;
+      margin: 0.3rem 0 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .trat-tab-panel ul li {
+      font-size: 0.84rem;
+      line-height: 1.7;
+      color: var(--cor-texto-suave);
+      padding-left: 1.3rem;
+      position: relative;
+    }
+
+    .trat-tab-panel ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55rem;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--cor-dourado);
+      opacity: 0.7;
+    }
+
+    .faq-item { margin-bottom: 1.1rem; }
+
+    .faq-q {
+      font-size: 0.86rem;
+      font-weight: 500;
+      color: var(--cor-azul-claro);
+      margin-bottom: 0.3rem;
+    }
+
+    .faq-a {
+      font-size: 0.82rem;
+      line-height: 1.75;
+      color: var(--cor-texto-suave);
+    }
+
+    .trat-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.4rem;
+      padding: 0.65rem 1.4rem;
+      background: transparent;
+      border: 1px solid var(--cor-dourado);
+      color: var(--cor-dourado);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: all 0.3s;
+    }
+
+    .trat-cta:hover { background: var(--cor-dourado); color: var(--cor-fundo); }
+
+    /* ═══════════════════════════════════════════════════════════════════
+       FORMAÇÃO (TIMELINE)
+       ═══════════════════════════════════════════════════════════════════ */
+    #formacao {
+      background: linear-gradient(180deg, transparent, rgba(13,31,60,0.35), transparent);
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 3rem auto 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, var(--cor-dourado) 0%, var(--cor-azul) 60%, transparent 100%);
+    }
+
+    .tl-item {
+      padding: 0 0 3rem 2.5rem;
+      position: relative;
+    }
+
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -4px;
+      top: 4px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--cor-dourado);
+      box-shadow: 0 0 14px rgba(200,160,90,0.5);
+    }
+
+    .tl-year {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cor-dourado);
+      margin-bottom: 0.3rem;
+    }
+
+    .tl-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      color: var(--cor-texto-claro);
+      margin-bottom: 0.2rem;
+    }
+
+    .tl-inst {
+      font-size: 0.8rem;
+      color: var(--cor-texto-suave);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════
+       DEPOIMENTOS
+       ═══════════════════════════════════════════════════════════════════ */
+    .dep-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.3rem;
+      margin-top: 3rem;
+    }
+
+    .dep-card {
+      background: var(--cor-card);
+      border: 1px solid rgba(200,160,90,0.08);
+      padding: 1.8rem;
+      transition: border-color 0.3s;
+    }
+
+    .dep-card:hover { border-color: rgba(200,160,90,0.25); }
+
+    .dep-stars {
+      color: var(--cor-dourado);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.3rem;
+    }
+
+    .dep-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      color: var(--cor-dourado);
+      opacity: 0.3;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .dep-text {
+      font-size: 0.82rem;
+      line-height: 1.75;
+      color: var(--cor-texto-suave);
+      margin-bottom: 1.2rem;
+    }
+
+    .dep-author {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--cor-azul-claro);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════
+       LOCAIS
+       ═══════════════════════════════════════════════════════════════════ */
+    .locais-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(200,160,90,0.06);
+      border: 1px solid rgba(200,160,90,0.06);
+      margin-top: 3rem;
+    }
+
+    .local-card {
+      background: var(--cor-fundo);
+      padding: 2rem 1.8rem;
+      transition: background 0.3s;
+    }
+
+    .local-card:hover { background: var(--cor-fundo-claro); }
+
+    .local-icon {
+      width: 32px;
+      height: 32px;
+      border: 1px solid rgba(74,144,217,0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cor-azul);
+      margin-bottom: 1rem;
+    }
+
+    .local-city {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cor-dourado);
+      margin-bottom: 0.25rem;
+    }
+
+    .local-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      color: var(--cor-texto-claro);
+      margin-bottom: 0.35rem;
+    }
+
+    .local-addr {
+      font-size: 0.76rem;
+      color: var(--cor-texto-suave);
+      line-height: 1.5;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════
+       CONTATO
+       ═══════════════════════════════════════════════════════════════════ */
+    #contato {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contato-info p {
+      font-size: 0.88rem;
+      line-height: 1.8;
+      color: var(--cor-texto-suave);
+      margin-bottom: 2rem;
+    }
+
+    .contact-items {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      font-size: 0.85rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(200,160,90,0.06);
+      transition: color 0.3s;
+    }
+
+    .contact-item:hover { color: var(--cor-dourado-claro); }
+    .contact-item:hover .ci-icon { border-color: var(--cor-dourado); color: var(--cor-dourado); }
+
+    .ci-icon {
+      width: 34px;
+      height: 34px;
+      flex-shrink: 0;
+      border: 1px solid rgba(200,160,90,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cor-azul);
+      transition: all 0.3s;
+    }
+
+    .instagram-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cor-dourado);
+      border-bottom: 1px solid rgba(200,160,90,0.22);
+      padding-bottom: 0.2rem;
+      margin-top: 1.3rem;
+      transition: color 0.3s;
+    }
+
+    .instagram-link:hover { color: var(--cor-dourado-claro); }
+
+    /* Formulário */
+    .contato-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    .ff {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .ff label {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cor-texto-suave);
+    }
+
+    .ff input,
+    .ff textarea,
+    .ff select {
+      background: rgba(22,48,85,0.22);
+      border: 1px solid rgba(200,160,90,0.12);
+      padding: 0.8rem 0.9rem;
+      color: var(--cor-texto-claro);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color 0.3s;
+      resize: vertical;
+    }
+
+    .ff input:focus,
+    .ff textarea:focus { border-color: rgba(200,160,90,0.4); }
+
+    .ff textarea { min-height: 110px; }
+    .ff select { appearance: none; cursor: pointer; }
+    .ff select option { background: var(--cor-fundo-claro); }
+
+    .btn-submit {
+      align-self: flex-start;
+      padding: 0.85rem 2.2rem;
+      background: var(--cor-dourado);
+      color: var(--cor-fundo);
+      border: none;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: all 0.3s;
+    }
+
+    .btn-submit:hover {
+      background: var(--cor-dourado-claro);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(200,160,90,0.2);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════════════════════════ */
+    footer {
+      padding: 2rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(200,160,90,0.08);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    footer p {
+      font-size: 0.7rem;
+      color: var(--cor-texto-suave);
+    }
+
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem;
+      color: var(--cor-dourado);
+      letter-spacing: 0.08em;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════
+       ANIMAÇÕES DE REVEAL
+       ═══════════════════════════════════════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.7s, transform 0.7s;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+    .reveal-d4 { transition-delay: 0.4s; }
+    .reveal-d5 { transition-delay: 0.5s; }
+
+    /* ═══════════════════════════════════════════════════════════════════
+       RESPONSIVO
+       ═══════════════════════════════════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .menu-btn { display: block; }
+      
+      #sobre { grid-template-columns: 1fr; gap: 2.5rem; }
+      #contato { grid-template-columns: 1fr; gap: 3rem; }
+      .dep-grid { grid-template-columns: 1fr; }
+      .locais-grid { grid-template-columns: 1fr 1fr; }
+      
+      .rings, .hero-slab { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .locais-grid { grid-template-columns: 1fr; }
+      .stats-block { grid-template-columns: 1fr 1fr; }
+      h1 { font-size: 2.2rem; }
+      section { padding: 4rem 5%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVEGAÇÃO -->
+<nav>
+  <a href="#" class="nav-brand">Dr. Taiuã Milan</a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#especialidades">Especialidades</a></li>
+    <li><a href="#formacao">Formação</a></li>
+    <li><a href="#locais">Locais</a></li>
+    <li><a href="#contato" class="nav-cta">Agendar Consulta</a></li>
+  </ul>
+  <button class="menu-btn">☰</button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-slab"></div>
+  
+  <div class="rings">
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring-line h"></div>
+    <div class="ring-line v"></div>
+    <div class="ring-dot"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Ortopedia & Cirurgia do Quadril</div>
+    
+    <h1>
+      <span class="dr">Dr.</span>
+      <span class="name">Taiuã Milan</span>
+      <span class="hero-subtitle">Especialista em Cirurgia do Quadril</span>
+    </h1>
+    
+    <span class="hero-crm">CRM/SC 21639 · RQE 15964 · TEOT 16353</span>
+    
+    <p class="hero-desc">
+      Cirurgião dedicado ao diagnóstico e tratamento das doenças da articulação coxofemoral — unindo precisão técnica, tecnologia de ponta e cuidado humanizado para devolver mobilidade e qualidade de vida.
+    </p>
+    
+    <div class="hero-actions">
+      <a href="#contato" class="btn-primary">
+        Agendar Consulta
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#sobre" class="btn-outline">Conheça o Especialista</a>
+    </div>
+  </div>
+  
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="sobre-visual reveal">
+    <div class="stats-block">
+      <div class="stat">
+        <div class="stat-n">10<sup>+</sup></div>
+        <div class="stat-l">Anos de experiência</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">7</div>
+        <div class="stat-l">Locais de atendimento</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">3</div>
+        <div class="stat-l">Estados cobertos</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">SBOT</div>
+        <div class="stat-l">Membro titular</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sobre-text reveal reveal-d2">
+    <span class="label">Sobre mim</span>
+    <h2>Movimento é vida.<br><em>Devolvê-lo é minha missão.</em></h2>
+    <p>Sou cirurgião especializado na avaliação e tratamento das doenças da articulação coxofemoral. Atuo no diagnóstico diferencial e no manejo cirúrgico e conservador de toda a gama de patologias do quadril.</p>
+    <p>Formado pela UNIDERP (2013), com residência em Ortopedia e Traumatologia no Hospital Marieta Konder Bornhausen e subespecialidade em Cirurgia do Quadril no Hospital Angelina Caron, em Curitiba.</p>
+    <p>Falo português, inglês e espanhol, e realizo atendimento tanto presencial quanto por teleconsulta.</p>
+    <div class="sobre-badges">
+      <span class="badge">Artroscopia do Quadril</span>
+      <span class="badge">Artroplastia Total</span>
+      <span class="badge">Cirurgia Minimamente Invasiva</span>
+      <span class="badge">Revisão de Próteses</span>
+      <span class="badge">Fraturas Complexas</span>
+      <span class="badge">Teleconsulta</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ESPECIALIDADES -->
+<section id="especialidades">
+  <div class="section-head reveal">
+    <span class="label">Habilidades & Especialidades</span>
+    <h2>Áreas de Atuação</h2>
+  </div>
+
+  <div class="trat-list reveal">
+    <!-- Artroplastia -->
+    <div class="trat-item" id="trat-01">
+      <button class="trat-trigger" onclick="toggleTrat('trat-01')">
+        <div class="trat-trigger-left">
+          <span class="trat-num">01</span>
+          <div>
+            <span class="trat-label-tag">Cirurgia de Alta Complexidade</span>
+            <span class="trat-title">Artroplastia Total do Quadril</span>
+          </div>
+        </div>
+        <div class="trat-arrow">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+      </button>
+      <div class="trat-panel">
+        <div class="trat-panel-inner">
+          <div class="trat-tabs">
+            <button class="trat-tab-btn active" onclick="switchTab(this, 0)">O que é</button>
+            <button class="trat-tab-btn" onclick="switchTab(this, 1)">Indicações</button>
+            <button class="trat-tab-btn" onclick="switchTab(this, 2)">Procedimento</button>
+            <button class="trat-tab-btn" onclick="switchTab(this, 3)">Recuperação</button>
+          </div>
+          <div class="trat-tab-panel active">
+            <h4>O que é a Artroplastia Total do Quadril?</h4>
+            <p>A artroplastia total do quadril é o procedimento cirúrgico no qual a articulação coxofemoral desgastada ou danificada é substituída por componentes protéticos de alta performance — geralmente compostos por uma haste femoral metálica, uma cabeça esférica e uma cúpula acetabular.</p>
+            <p>É considerada uma das cirurgias com maior impacto na qualidade de vida, devolvendo mobilidade, eliminando a dor crônica e permitindo ao paciente retornar às atividades cotidianas em poucas semanas.</p>
+          </div>
+          <div class="trat-tab-panel">
+            <h4>Quando a cirurgia é indicada?</h4>
+            <p>A artroplastia é indicada quando tratamentos conservadores não controlam mais a dor ou a limitação funcional:</p>
+            <ul>
+              <li>Dor intensa no quadril que persiste em repouso ou à noite</li>
+              <li>Dificuldade para caminhar, subir escadas ou calçar sapatos</li>
+              <li>Rigidez articular que limita a amplitude de movimento</li>
+              <li>Deformidade progressiva do membro inferior</li>
+            </ul>
+          </div>
+          <div class="trat-tab-panel">
+            <h4>Como é realizada a cirurgia?</h4>
+            <p>O procedimento é realizado sob anestesia raquidiana ou geral, com duração média de 1h30 a 2h30. Utilizamos preferencialmente abordagens minimamente invasivas.</p>
+            <ul>
+              <li>Planejamento digital pré-operatório com medição precisa dos implantes</li>
+              <li>Remoção dos fragmentos articulares danificados</li>
+              <li>Implantação dos componentes protéticos</li>
+              <li>Verificação intraoperatória de estabilidade e alinhamento</li>
+            </ul>
+          </div>
+          <div class="trat-tab-panel">
+            <h4>Recuperação pós-operatória</h4>
+            <ul>
+              <li><strong style="color:var(--cor-azul-claro)">Dias 1–3:</strong> Alta hospitalar, início da deambulação com andador</li>
+              <li><strong style="color:var(--cor-azul-claro)">Semanas 2–6:</strong> Fisioterapia intensiva, abandono progressivo do andador</li>
+              <li><strong style="color:var(--cor-azul-claro)">Mês 2–3:</strong> Marcha independente, retorno às atividades leves</li>
+              <li><strong style="color:var(--cor-azul-claro)">Mês 4–6:</strong> Retorno a atividades físicas moderadas</li>
+            </ul>
+            <a href="#contato" class="trat-cta">Agendar Avaliação →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Artroscopia -->
+    <div class="trat-item" id="trat-02">
+      <button class="trat-trigger" onclick="toggleTrat('trat-02')">
+        <div class="trat-trigger-left">
+          <span class="trat-num">02</span>
+          <div>
+            <span class="trat-label-tag">Cirurgia Minimamente Invasiva</span>
+            <span class="trat-title">Artroscopia do Quadril</span>
+          </div>
+        </div>
+        <div class="trat-arrow">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+      </button>
+      <div class="trat-panel">
+        <div class="trat-panel-inner">
+          <div class="trat-tabs">
+            <button class="trat-tab-btn active" onclick="switchTab(this, 0)">O que é</button>
+            <button class="trat-tab-btn" onclick="switchTab(this, 1)">Indicações</button>
+            <button class="trat-tab-btn" onclick="switchTab(this, 2)">Recuperação</button>
+          </div>
+          <div class="trat-tab-panel active">
+            <h4>O que é a Artroscopia do Quadril?</h4>
+            <p>Técnica cirúrgica minimamente invasiva em que uma câmera miniaturizada e instrumentos de precisão são introduzidos na articulação através de pequenas incisões de menos de 1 cm.</p>
+            <p>Permite tratar diretamente estruturas internas como o labrum acetabular, a cartilagem articular e os ligamentos — sem necessidade de abrir a articulação.</p>
+          </div>
+          <div class="trat-tab-panel">
+            <h4>Indicações principais</h4>
+            <ul>
+              <li>Impacto Femoroacetabular (IFA)</li>
+              <li>Lesões do labrum acetabular</li>
+              <li>Condropatias iniciais</li>
+              <li>Corpos livres intra-articulares</li>
+              <li>Afecções da cápsula articular</li>
+            </ul>
+          </div>
+          <div class="trat-tab-panel">
+            <h4>Recuperação</h4>
+            <ul>
+              <li><strong style="color:var(--cor-azul-claro)">Semana 1–2:</strong> Uso de muletas, crioterapia</li>
+              <li><strong style="color:var(--cor-azul-claro)">Semana 3–6:</strong> Fisioterapia ativa, fortalecimento</li>
+              <li><strong style="color:var(--cor-azul-claro)">Mês 2–3:</strong> Marcha normal, atividades leves</li>
+              <li><strong style="color:var(--cor-azul-claro)">Mês 4–6:</strong> Retorno ao esporte recreativo</li>
+            </ul>
+            <a href="#contato" class="trat-cta">Agendar Avaliação →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fraturas -->
+    <div class="trat-item" id="trat-03">
+      <button class="trat-trigger" onclick="toggleTrat('trat-03')">
+        <div class="trat-trigger-left">
+          <span class="trat-num">03</span>
+          <div>
+            <span class="trat-label-tag">Traumatologia</span>
+            <span class="trat-title">Fraturas do Fêmur e Acetábulo</span>
+          </div>
+        </div>
+        <div class="trat-arrow">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+      </button>
+      <div class="trat-panel">
+        <div class="trat-panel-inner">
+          <h4>Fraturas do Fêmur Proximal e Acetábulo</h4>
+          <p>As fraturas da região do quadril são lesões graves que afetam principalmente idosos após quedas, mas também adultos jovens em traumas de alta energia. O tratamento cirúrgico precoce é essencial.</p>
+          <ul>
+            <li>Fratura do colo do fêmur</li>
+            <li>Fratura transtrocantérica e subtrocantérica</li>
+            <li>Fratura-luxação do acetábulo</li>
+            <li>Fratura do anel pélvico</li>
+          </ul>
+          <a href="#contato" class="trat-cta">Agendar Avaliação →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Impacto Femoroacetabular -->
+    <div class="trat-item" id="trat-04">
+      <button class="trat-trigger" onclick="toggleTrat('trat-04')">
+        <div class="trat-trigger-left">
+          <span class="trat-num">04</span>
+          <div>
+            <span class="trat-label-tag">Preservação Articular</span>
+            <span class="trat-title">Impacto Femoroacetabular (IFA)</span>
+          </div>
+        </div>
+        <div class="trat-arrow">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+      </button>
+      <div class="trat-panel">
+        <div class="trat-panel-inner">
+          <h4>O que é o Impacto Femoroacetabular?</h4>
+          <p>Condição em que alterações morfológicas do fêmur proximal e/ou acetábulo geram contato ósseo anormal durante os movimentos do quadril. É uma das principais causas de dor no quadril em adultos jovens e atletas.</p>
+          <ul>
+            <li>Tipo CAM (bossa óssea no colo do fêmur)</li>
+            <li>Tipo PINCER (cobertura excessiva do acetábulo)</li>
+            <li>Tipo misto (combina ambos)</li>
+          </ul>
+          <a href="#contato" class="trat-cta">Agendar Avaliação →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Necrose -->
+    <div class="trat-item" id="trat-05">
+      <button class="trat-trigger" onclick="toggleTrat('trat-05')">
+        <div class="trat-trigger-left">
+          <span class="trat-num">05</span>
+          <div>
+            <span class="trat-label-tag">Condição Óssea</span>
+            <span class="trat-title">Necrose da Cabeça Femoral</span>
+          </div>
+        </div>
+        <div class="trat-arrow">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+      </button>
+      <div class="trat-panel">
+        <div class="trat-panel-inner">
+          <h4>Necrose Avascular da Cabeça Femoral</h4>
+          <p>Condição em que a interrupção do fluxo sanguíneo para a cabeça do fêmur leva à morte do tecido ósseo. Acomete principalmente adultos entre 30 e 60 anos.</p>
+          <p>Principais fatores de risco:</p>
+          <ul>
+            <li>Uso prolongado de corticosteroides</li>
+            <li>Consumo excessivo de álcool</li>
+            <li>Fratura ou luxação prévia do quadril</li>
+            <li>Doenças hematológicas</li>
+          </ul>
+          <a href="#contato" class="trat-cta">Agendar Avaliação →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Displasia -->
+    <div class="trat-item" id="trat-06">
+      <button class="trat-trigger" onclick="toggleTrat('trat-06')">
+        <div class="trat-trigger-left">
+          <span class="trat-num">06</span>
+          <div>
+            <span class="trat-label-tag">Deformidade & Morfologia</span>
+            <span class="trat-title">Displasia & Discrepância de Membros</span>
+          </div>
+        </div>
+        <div class="trat-arrow">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+      </button>
+      <div class="trat-panel">
+        <div class="trat-panel-inner">
+          <h4>Displasia do Quadril e Discrepância de Membros</h4>
+          <p>A displasia do quadril é uma condição em que o acetábulo não cobre adequadamente a cabeça femoral, gerando instabilidade e artrose precoce.</p>
+          <p>A discrepância de membros inferiores é a diferença de comprimento entre as pernas, que quando superior a 1,5–2 cm causa alterações de marcha e dor lombar.</p>
+          <a href="#contato" class="trat-cta">Agendar Avaliação →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FORMAÇÃO -->
+<section id="formacao">
+  <div class="section-head reveal">
+    <span class="label">Trajetória Acadêmica</span>
+    <h2>Formação & Titulações</h2>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item reveal">
+      <div class="tl-year">2019</div>
+      <div class="tl-title">Subespecialidade em Cirurgia do Quadril</div>
+      <div class="tl-inst">Hospital Angelina Caron — Curitiba, PR</div>
+    </div>
+    <div class="tl-item reveal reveal-d1">
+      <div class="tl-year">2015 – 2018</div>
+      <div class="tl-title">Residência Médica em Ortopedia e Traumatologia</div>
+      <div class="tl-inst">Hospital Marieta Konder Bornhausen — SC</div>
+    </div>
+    <div class="tl-item reveal reveal-d2">
+      <div class="tl-year">2014 – 2015</div>
+      <div class="tl-title">Médico no Hospital Militar de Campo Grande</div>
+      <div class="tl-inst">Hospital Militar de Área de Campo Grande — MS</div>
+    </div>
+    <div class="tl-item reveal reveal-d3">
+      <div class="tl-year">2008 – 2013</div>
+      <div class="tl-title">Graduação em Medicina</div>
+      <div class="tl-inst">UNIDERP — Universidade para o Desenvolvimento do Estado e da Região do Pantanal</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- DEPOIMENTOS -->
+<section id="depoimentos">
+  <div class="section-head reveal">
+    <span class="label">O que dizem os pacientes</span>
+    <h2>Depoimentos Verificados</h2>
+  </div>
+
+  <div class="dep-grid">
+    <div class="dep-card reveal">
+      <div class="dep-stars">★ ★ ★ ★ ★</div>
+      <div class="dep-quote">"</div>
+      <p class="dep-text">Fiz uma cirurgia de quadril e no dia seguinte já estava andando com ajuda do andador. Fiquei impressionado com a recuperação. Recuperei minha qualidade de vida.</p>
+      <div class="dep-author">Edemilson W. · Verificado · Fev 2024</div>
+    </div>
+    <div class="dep-card reveal reveal-d2">
+      <div class="dep-stars">★ ★ ★ ★ ★</div>
+      <div class="dep-quote">"</div>
+      <p class="dep-text">Dr. Taiuã foi super atencioso, pontual, esclareceu dúvidas e resolveu o problema de forma precisa. Parabéns ao profissional.</p>
+      <div class="dep-author">Ana C. T. · Verificado · Nov 2020</div>
+    </div>
+    <div class="dep-card reveal reveal-d4">
+      <div class="dep-stars">★ ★ ★ ★ ★</div>
+      <div class="dep-quote">"</div>
+      <p class="dep-text">Conduziu dois procedimentos cirúrgicos de alta complexidade no meu acetábulo. Minha recuperação está sendo ótima. Profissional, atencioso e passou muita confiança.</p>
+      <div class="dep-author">Lídia T. P. · Verificado · Nov 2020</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- LOCAIS -->
+<section id="locais">
+  <div class="section-head reveal">
+    <span class="label">Onde me encontrar</span>
+    <h2>Locais de Atendimento</h2>
+  </div>
+
+  <div class="locais-grid">
+    <div class="local-card reveal">
+      <div class="local-icon">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div class="local-city">Balneário Camboriú</div>
+      <div class="local-name">Clínica Orthoprime</div>
+      <div class="local-addr">Rua Arthur Max Dôose, 156 · 6º andar<br>Bairro Pioneiros · SC</div>
+    </div>
+    
+    <div class="local-card reveal reveal-d1">
+      <div class="local-icon">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div class="local-city">Joinville</div>
+      <div class="local-name">Hospital Dona Helena</div>
+      <div class="local-addr">Av. Dr. João Colin, 111<br>Joinville · SC</div>
+    </div>
+    
+    <div class="local-card reveal reveal-d2">
+      <div class="local-icon">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div class="local-city">Joinville</div>
+      <div class="local-name">CLINIPAM — Joinville</div>
+      <div class="local-addr">Rua F11, 1215<br>Bairro América · SC</div>
+    </div>
+    
+    <div class="local-card reveal reveal-d3">
+      <div class="local-icon">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div class="local-city">Brusque</div>
+      <div class="local-name">Clínica Ortocentro</div>
+      <div class="local-addr">Brusque · SC</div>
+    </div>
+    
+    <div class="local-card reveal reveal-d4">
+      <div class="local-icon">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div class="local-city">Itajaí</div>
+      <div class="local-name">CLINIPAM — Itajaí</div>
+      <div class="local-addr">Rua Samuel Heusi, 190<br>Centro · SC</div>
+    </div>
+    
+    <div class="local-card reveal reveal-d5">
+      <div class="local-icon">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <div class="local-city">Online</div>
+      <div class="local-name">Teleconsulta</div>
+      <div class="local-addr">Atendimento por videochamada<br>PT · EN · ES</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="contato-info reveal">
+    <span class="label">Contato</span>
+    <h2>Agende sua <em>consulta</em></h2>
+    <p>Atendo pacientes que buscam diagnóstico preciso, segunda opinião ou indicação cirúrgica. O cuidado começa com uma boa conversa.</p>
+
+    <div class="contact-items">
+      <a href="https://wa.me/5547984973346" class="contact-item" target="_blank">
+        <div class="ci-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        WhatsApp · (47) 98497-3346
+      </a>
+      
+      <a href="mailto:contato@drtaiuamilan.com.br" class="contact-item">
+        <div class="ci-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        contato@drtaiuamilan.com.br
+      </a>
+      
+      <a href="tel:4733603711" class="contact-item">
+        <div class="ci-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        Orthoprime · (47) 3360-3711
+      </a>
+    </div>
+
+    <a href="https://instagram.com/drtaiuamilan" target="_blank" class="instagram-link">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      @drtaiuamilan
+    </a>
+  </div>
+
+  <form class="contato-form reveal reveal-d2" action="https://formspree.io/f/SEU_ID_AQUI" method="POST">
+    <div class="ff">
+      <label>Nome completo</label>
+      <input type="text" name="nome" placeholder="Seu nome" required>
+    </div>
+    <div class="ff">
+      <label>WhatsApp</label>
+      <input type="tel" name="whatsapp" placeholder="(XX) XXXXX-XXXX" required>
+    </div>
+    <div class="ff">
+      <label>Local de preferência</label>
+      <select name="local" required>
+        <option value="">Selecione uma unidade…</option>
+        <option>Clínica Orthoprime — Balneário Camboriú</option>
+        <option>Hospital Dona Helena — Joinville</option>
+        <option>CLINIPAM — Joinville</option>
+        <option>Clínica Ortocentro — Brusque</option>
+        <option>CLINIPAM — Itajaí</option>
+        <option>Teleconsulta</option>
+      </select>
+    </div>
+    <div class="ff">
+      <label>Motivo da consulta</label>
+      <textarea name="mensagem" placeholder="Descreva brevemente sua queixa ou dúvida…" required></textarea>
+    </div>
+    <button type="submit" class="btn-submit">Enviar Mensagem</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Dr. Taiuã Milan — CRM/SC 21639</p>
+  <div class="footer-brand">Ortopedia · Cirurgia do Quadril</div>
+  <p>Santa Catarina, Brasil</p>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+  // Reveal ao scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.08 });
+  
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Accordion
+  function toggleTrat(id) {
+    const item = document.getElementById(id);
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.trat-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Tabs
+  function switchTab(btn, idx) {
+    const panel = btn.closest('.trat-panel-inner');
+    panel.querySelectorAll('.trat-tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    panel.querySelectorAll('.trat-tab-panel').forEach((p, i) => {
+      p.classList.toggle('active', i === idx);
+    });
+  }
+</script>
+
+</body>
+</html>
