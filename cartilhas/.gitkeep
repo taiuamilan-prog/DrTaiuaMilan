@@ -1,8 +1,7 @@
 # Cartilhas de orientação ao paciente
 
-Coloque aqui os arquivos PDF:
+Esta pasta abriga os PDFs vinculados na seção "Cartilhas" do site (id #materiais).
 
-- `cartilha-pre-operatorio.pdf` — Cartilha de Pré-Operatório
-- `cartilha-pos-operatorio.pdf` — Cartilha de Pós-Operatório
-
-Os links em `index.html` (seção `#materiais`) já apontam para esses dois caminhos.
+Arquivos esperados:
+- cartilha-pre-operatorio.pdf
+- cartilha-pos-operatorio.pdf
