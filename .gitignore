@@ -3,6 +3,7 @@ dist
 dist-ssr
 .tsbuild
 *.tsbuildinfo
+.netlify
 .env
 .env.local
 .env.*.local
