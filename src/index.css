@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-ivory-50 text-slate-700 font-sans;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif text-navy-900 tracking-tightish;
+    font-variation-settings: "opsz" 32;
+  }
+
+  ::selection {
+    background-color: #0E9F8E;
+    color: #FAF8F3;
+  }
+
+  /* Numerais tabulares para datas/dosagens */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer utilities {
+  .focus-ring {
+    @apply outline-none ring-offset-2 ring-offset-ivory-50 focus-visible:ring-2 focus-visible:ring-teal-500;
+  }
+}
