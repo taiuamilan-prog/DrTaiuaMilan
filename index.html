@@ -1,1555 +1,999 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dr. Taiuã Milan — Ortopedista | Cirurgia do Quadril</title>
-  
-  <!-- SEO -->
-  <meta name="description" content="Dr. Taiuã Milan - Ortopedista especialista em Cirurgia do Quadril em Santa Catarina. Artroplastia, Artroscopia, Fraturas. CRM/SC 21639.">
-  
-  <!-- Fontes -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  
-  <style>
-    /* ═══════════════════════════════════════════════════════════════════
-       CORES - Edite aqui para mudar as cores do site
-       ═══════════════════════════════════════════════════════════════════ */
-    :root {
-      --cor-fundo: #08152a;
-      --cor-fundo-claro: #0c1e3c;
-      --cor-fundo-medio: #163055;
-      --cor-dourado: #c8a05a;
-      --cor-dourado-claro: #e0c07a;
-      --cor-azul: #4a90d9;
-      --cor-azul-claro: #7ab3e8;
-      --cor-texto: #d8e2f4;
-      --cor-texto-claro: #f0f4fb;
-      --cor-texto-suave: #7d90b0;
-      --cor-card: rgba(12,30,60,0.6);
-      --cor-borda: rgba(200,160,90,0.1);
-    }
-
-    /* Reset e Base */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    
-    body {
-      background: var(--cor-fundo);
-      color: var(--cor-texto);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    button { font-family: inherit; cursor: pointer; }
-
-    /* Textura de fundo */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* ═══════════════════════════════════════════════════════════════════
-       NAVEGAÇÃO
-       ═══════════════════════════════════════════════════════════════════ */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem 5%;
-      background: linear-gradient(180deg, rgba(8,21,42,0.98) 0%, rgba(8,21,42,0) 100%);
-      backdrop-filter: blur(10px);
-    }
-
-    .nav-brand {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      color: var(--cor-dourado);
-      text-transform: uppercase;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--cor-texto-suave);
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      transition: color 0.3s;
-    }
-
-    .nav-links a:hover { color: var(--cor-dourado-claro); }
-
-    .nav-cta {
-      padding: 0.5rem 1.2rem;
-      border: 1px solid var(--cor-dourado);
-      color: var(--cor-dourado) !important;
-      transition: all 0.3s !important;
-    }
-
-    .nav-cta:hover {
-      background: var(--cor-dourado);
-      color: var(--cor-fundo) !important;
-    }
-
-    /* Menu Mobile */
-    .menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--cor-dourado);
-      font-size: 1.5rem;
-    }
-
-    /* ═══════════════════════════════════════════════════════════════════
-       HERO
-       ═══════════════════════════════════════════════════════════════════ */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      padding: 0 5%;
-    }
-
-    .hero-slab {
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(145deg, var(--cor-fundo-medio) 0%, var(--cor-fundo-claro) 60%, transparent 100%);
-      clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
-      opacity: 0.5;
-    }
-
-    .rings {
-      position: absolute;
-      right: 8%;
-      top: 50%;
-      transform: translateY(-50%);
-      width: min(40vw, 480px);
-      height: min(40vw, 480px);
-      z-index: 1;
-    }
-
-    .ring {
-      position: absolute;
-      border-radius: 50%;
-      border: 1px solid rgba(200,160,90,0.15);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      animation: pulse 5s ease-in-out infinite;
-    }
-
-    .ring:nth-child(1) { width: 100%; height: 100%; }
-    .ring:nth-child(2) { width: 70%; height: 70%; border-color: rgba(74,144,217,0.18); animation-delay: 0.5s; }
-    .ring:nth-child(3) { 
-      width: 42%; 
-      height: 42%; 
-      background: radial-gradient(circle, rgba(74,144,217,0.1) 0%, transparent 70%);
-      border-color: rgba(74,144,217,0.22);
-      animation-delay: 1s;
-    }
-
-    .ring-dot {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--cor-dourado);
-      box-shadow: 0 0 25px var(--cor-dourado), 0 0 50px rgba(200,160,90,0.3);
-      animation: glow 5s ease-in-out infinite;
-    }
-
-    .ring-line {
-      position: absolute;
-      background: rgba(200,160,90,0.1);
-      top: 50%;
-      left: 50%;
-    }
-    .ring-line.h { width: 100%; height: 1px; transform: translate(-50%, -50%); }
-    .ring-line.v { width: 1px; height: 100%; transform: translate(-50%, -50%); }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
-      50% { opacity: 1; transform: translate(-50%, -50%) scale(1.02); }
-    }
-
-    @keyframes glow {
-      0%, 100% { box-shadow: 0 0 20px var(--cor-dourado); }
-      50% { box-shadow: 0 0 40px var(--cor-dourado-claro), 0 0 80px rgba(200,160,90,0.2); }
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 550px;
-    }
-
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.65rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--cor-dourado);
-      margin-bottom: 1.5rem;
-      animation: fadeUp 0.8s ease forwards;
-    }
-
-    .hero-eyebrow::before {
-      content: '';
-      width: 40px;
-      height: 1px;
-      background: var(--cor-dourado);
-    }
-
-    h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
-      font-weight: 300;
-      line-height: 1.1;
-      color: var(--cor-texto-claro);
-      animation: fadeUp 0.8s ease forwards 0.2s;
-      opacity: 0;
-    }
-
-    h1 .dr { font-weight: 600; }
-    h1 .name { display: block; color: var(--cor-dourado-claro); font-style: italic; }
-
-    .hero-subtitle {
-      display: block;
-      font-size: clamp(0.9rem, 1.6vw, 1.2rem);
-      font-weight: 300;
-      color: var(--cor-azul-claro);
-      letter-spacing: 0.06em;
-      margin-top: 0.5rem;
-      font-family: 'DM Sans', sans-serif;
-    }
-
-    .hero-crm {
-      display: inline-block;
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      color: var(--cor-texto-suave);
-      margin: 0.7rem 0 1.4rem;
-      animation: fadeUp 0.8s ease forwards 0.4s;
-      opacity: 0;
-    }
-
-    .hero-desc {
-      font-size: 0.9rem;
-      line-height: 1.8;
-      color: var(--cor-texto-suave);
-      max-width: 450px;
-      margin-bottom: 2rem;
-      animation: fadeUp 0.8s ease forwards 0.5s;
-      opacity: 0;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      animation: fadeUp 0.8s ease forwards 0.6s;
-      opacity: 0;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0.8rem 1.8rem;
-      background: var(--cor-dourado);
-      color: var(--cor-fundo);
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      transition: all 0.3s;
-    }
-
-    .btn-primary:hover {
-      background: var(--cor-dourado-claro);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(200,160,90,0.25);
-    }
-
-    .btn-outline {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0.8rem 1.8rem;
-      border: 1px solid rgba(200,160,90,0.4);
-      color: var(--cor-dourado);
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      transition: all 0.3s;
-    }
-
-    .btn-outline:hover {
-      border-color: var(--cor-dourado);
-      background: rgba(200,160,90,0.05);
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Scroll hint */
-    .scroll-hint {
-      position: absolute;
-      bottom: 2rem;
-      left: 5%;
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      font-size: 0.62rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--cor-texto-suave);
-      animation: fadeUp 0.8s ease forwards 1s;
-      opacity: 0;
-    }
-
-    .scroll-line {
-      width: 1px;
-      height: 35px;
-      background: linear-gradient(180deg, transparent, var(--cor-dourado));
-      animation: scrollDrop 1.8s ease-in-out infinite 1.2s;
-    }
-
-    @keyframes scrollDrop {
-      0% { transform: scaleY(0); transform-origin: top; }
-      50% { transform: scaleY(1); transform-origin: top; }
-      51% { transform-origin: bottom; }
-      100% { transform: scaleY(0); transform-origin: bottom; }
-    }
-
-    /* ═══════════════════════════════════════════════════════════════════
-       DIVISOR
-       ═══════════════════════════════════════════════════════════════════ */
-    .divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(200,160,90,0.12), transparent);
-      margin: 0 5%;
-    }
-
-    /* ═══════════════════════════════════════════════════════════════════
-       SEÇÕES GERAIS
-       ═══════════════════════════════════════════════════════════════════ */
-    section { padding: 6rem 5%; }
-
-    .section-head { margin-bottom: 3rem; }
-
-    .label {
-      font-size: 0.65rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--cor-dourado);
-      margin-bottom: 0.8rem;
-      display: block;
-    }
-
-    h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.6rem, 2.8vw, 2.5rem);
-      font-weight: 400;
-      color: var(--cor-texto-claro);
-      line-height: 1.2;
-    }
-
-    h2 em {
-      font-style: italic;
-      color: var(--cor-dourado-claro);
-    }
-
-    /* ═══════════════════════════════════════════════════════════════════
-       SOBRE
-       ═══════════════════════════════════════════════════════════════════ */
-    #sobre {
-      display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-
-    .stats-block {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: rgba(200,160,90,0.08);
-      border: 1px solid rgba(200,160,90,0.1);
-      border-left: 2px solid var(--cor-dourado);
-    }
-
-    .stat {
-      background: var(--cor-fundo);
-      padding: 1.8rem;
-      transition: background 0.3s;
-    }
-
-    .stat:hover { background: var(--cor-fundo-claro); }
-
-    .stat-n {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.8rem;
-      font-weight: 600;
-      line-height: 1;
-      color: var(--cor-dourado-claro);
-    }
-
-    .stat-n sup { font-size: 1rem; vertical-align: super; }
-
-    .stat-l {
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--cor-texto-suave);
-      margin-top: 0.4rem;
-    }
-
-    .sobre-text p {
-      font-size: 0.88rem;
-      line-height: 1.85;
-      color: var(--cor-texto-suave);
-      margin-bottom: 1rem;
-    }
-
-    .sobre-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-top: 1.4rem;
-    }
-
-    .badge {
-      padding: 0.3rem 0.8rem;
-      border: 1px solid rgba(74,144,217,0.22);
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--cor-azul-claro);
-    }
-
-    /* ═══════════════════════════════════════════════════════════════════
-       TRATAMENTOS (ACCORDION)
-       ═══════════════════════════════════════════════════════════════════ */
-    .trat-list {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      margin-top: 3rem;
-    }
-
-    .trat-item {
-      background: var(--cor-fundo);
-      border: 1px solid rgba(200,160,90,0.08);
-      overflow: hidden;
-      transition: border-color 0.3s;
-    }
-
-    .trat-item.open { border-color: rgba(200,160,90,0.3); }
-
-    .trat-trigger {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.8rem 2rem;
-      background: none;
-      border: none;
-      text-align: left;
-      transition: background 0.3s;
-      gap: 1rem;
-    }
-
-    .trat-trigger:hover { background: rgba(22,48,85,0.25); }
-    .trat-item.open .trat-trigger { background: rgba(22,48,85,0.4); }
-
-    .trat-trigger-left {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .trat-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: rgba(200,160,90,0.18);
-      min-width: 2.2rem;
-      transition: color 0.3s;
-    }
-
-    .trat-item.open .trat-num { color: rgba(200,160,90,0.45); }
-
-    .trat-label-tag {
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--cor-azul);
-      margin-bottom: 0.25rem;
-      display: block;
-    }
-
-    .trat-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--cor-texto-claro);
-    }
-
-    .trat-arrow {
-      width: 32px;
-      height: 32px;
-      flex-shrink: 0;
-      border: 1px solid rgba(200,160,90,0.18);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--cor-dourado);
-      transition: all 0.4s;
-    }
-
-    .trat-item.open .trat-arrow {
-      transform: rotate(45deg);
-      background: rgba(200,160,90,0.08);
-      border-color: var(--cor-dourado);
-    }
-
-    .trat-panel {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .trat-item.open .trat-panel { max-height: 1500px; }
-
-    .trat-panel-inner { padding: 0 2rem 2rem; }
-
-    /* Tabs */
-    .trat-tabs {
-      display: flex;
-      gap: 0;
-      border-bottom: 1px solid rgba(200,160,90,0.12);
-      margin-bottom: 1.8rem;
-      flex-wrap: wrap;
-    }
-
-    .trat-tab-btn {
-      padding: 0.6rem 1.2rem;
-      background: none;
-      border: none;
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--cor-texto-suave);
-      border-bottom: 2px solid transparent;
-      margin-bottom: -1px;
-      transition: all 0.25s;
-      white-space: nowrap;
-    }
-
-    .trat-tab-btn:hover { color: var(--cor-texto); }
-    .trat-tab-btn.active { color: var(--cor-dourado); border-bottom-color: var(--cor-dourado); }
-
-    .trat-tab-panel { display: none; }
-    .trat-tab-panel.active { display: block; }
-
-    .trat-tab-panel h4 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem;
-      color: var(--cor-texto-claro);
-      margin-bottom: 0.9rem;
-      font-weight: 600;
-    }
-
-    .trat-tab-panel p {
-      font-size: 0.85rem;
-      line-height: 1.85;
-      color: var(--cor-texto-suave);
-      margin-bottom: 0.8rem;
-    }
-
-    .trat-tab-panel ul {
-      list-style: none;
-      margin: 0.3rem 0 0.9rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .trat-tab-panel ul li {
-      font-size: 0.84rem;
-      line-height: 1.7;
-      color: var(--cor-texto-suave);
-      padding-left: 1.3rem;
-      position: relative;
-    }
-
-    .trat-tab-panel ul li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0.55rem;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--cor-dourado);
-      opacity: 0.7;
-    }
-
-    .faq-item { margin-bottom: 1.1rem; }
-
-    .faq-q {
-      font-size: 0.86rem;
-      font-weight: 500;
-      color: var(--cor-azul-claro);
-      margin-bottom: 0.3rem;
-    }
-
-    .faq-a {
-      font-size: 0.82rem;
-      line-height: 1.75;
-      color: var(--cor-texto-suave);
-    }
-
-    .trat-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 1.4rem;
-      padding: 0.65rem 1.4rem;
-      background: transparent;
-      border: 1px solid var(--cor-dourado);
-      color: var(--cor-dourado);
-      font-size: 0.7rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      transition: all 0.3s;
-    }
-
-    .trat-cta:hover { background: var(--cor-dourado); color: var(--cor-fundo); }
-
-    /* ═══════════════════════════════════════════════════════════════════
-       FORMAÇÃO (TIMELINE)
-       ═══════════════════════════════════════════════════════════════════ */
-    #formacao {
-      background: linear-gradient(180deg, transparent, rgba(13,31,60,0.35), transparent);
-    }
-
-    .timeline {
-      position: relative;
-      max-width: 800px;
-      margin: 3rem auto 0;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 1px;
-      background: linear-gradient(180deg, var(--cor-dourado) 0%, var(--cor-azul) 60%, transparent 100%);
-    }
-
-    .tl-item {
-      padding: 0 0 3rem 2.5rem;
-      position: relative;
-    }
-
-    .tl-item::before {
-      content: '';
-      position: absolute;
-      left: -4px;
-      top: 4px;
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--cor-dourado);
-      box-shadow: 0 0 14px rgba(200,160,90,0.5);
-    }
-
-    .tl-year {
-      font-size: 0.65rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--cor-dourado);
-      margin-bottom: 0.3rem;
-    }
-
-    .tl-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem;
-      color: var(--cor-texto-claro);
-      margin-bottom: 0.2rem;
-    }
-
-    .tl-inst {
-      font-size: 0.8rem;
-      color: var(--cor-texto-suave);
-    }
-
-    /* ═══════════════════════════════════════════════════════════════════
-       DEPOIMENTOS
-       ═══════════════════════════════════════════════════════════════════ */
-    .dep-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.3rem;
-      margin-top: 3rem;
-    }
-
-    .dep-card {
-      background: var(--cor-card);
-      border: 1px solid rgba(200,160,90,0.08);
-      padding: 1.8rem;
-      transition: border-color 0.3s;
-    }
-
-    .dep-card:hover { border-color: rgba(200,160,90,0.25); }
-
-    .dep-stars {
-      color: var(--cor-dourado);
-      font-size: 0.68rem;
-      letter-spacing: 0.08em;
-      margin-bottom: 0.3rem;
-    }
-
-    .dep-quote {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem;
-      color: var(--cor-dourado);
-      opacity: 0.3;
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-
-    .dep-text {
-      font-size: 0.82rem;
-      line-height: 1.75;
-      color: var(--cor-texto-suave);
-      margin-bottom: 1.2rem;
-    }
-
-    .dep-author {
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      color: var(--cor-azul-claro);
-    }
-
-    /* ═══════════════════════════════════════════════════════════════════
-       LOCAIS
-       ═══════════════════════════════════════════════════════════════════ */
-    .locais-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: rgba(200,160,90,0.06);
-      border: 1px solid rgba(200,160,90,0.06);
-      margin-top: 3rem;
-    }
-
-    .local-card {
-      background: var(--cor-fundo);
-      padding: 2rem 1.8rem;
-      transition: background 0.3s;
-    }
-
-    .local-card:hover { background: var(--cor-fundo-claro); }
-
-    .local-icon {
-      width: 32px;
-      height: 32px;
-      border: 1px solid rgba(74,144,217,0.22);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--cor-azul);
-      margin-bottom: 1rem;
-    }
-
-    .local-city {
-      font-size: 0.62rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--cor-dourado);
-      margin-bottom: 0.25rem;
-    }
-
-    .local-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.05rem;
-      color: var(--cor-texto-claro);
-      margin-bottom: 0.35rem;
-    }
-
-    .local-addr {
-      font-size: 0.76rem;
-      color: var(--cor-texto-suave);
-      line-height: 1.5;
-    }
-
-    /* ═══════════════════════════════════════════════════════════════════
-       CONTATO
-       ═══════════════════════════════════════════════════════════════════ */
-    #contato {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: start;
-    }
-
-    .contato-info p {
-      font-size: 0.88rem;
-      line-height: 1.8;
-      color: var(--cor-texto-suave);
-      margin-bottom: 2rem;
-    }
-
-    .contact-items {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 0.9rem;
-      font-size: 0.85rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid rgba(200,160,90,0.06);
-      transition: color 0.3s;
-    }
-
-    .contact-item:hover { color: var(--cor-dourado-claro); }
-    .contact-item:hover .ci-icon { border-color: var(--cor-dourado); color: var(--cor-dourado); }
-
-    .ci-icon {
-      width: 34px;
-      height: 34px;
-      flex-shrink: 0;
-      border: 1px solid rgba(200,160,90,0.18);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--cor-azul);
-      transition: all 0.3s;
-    }
-
-    .instagram-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--cor-dourado);
-      border-bottom: 1px solid rgba(200,160,90,0.22);
-      padding-bottom: 0.2rem;
-      margin-top: 1.3rem;
-      transition: color 0.3s;
-    }
-
-    .instagram-link:hover { color: var(--cor-dourado-claro); }
-
-    /* Formulário */
-    .contato-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.1rem;
-    }
-
-    .ff {
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-    }
-
-    .ff label {
-      font-size: 0.62rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--cor-texto-suave);
-    }
-
-    .ff input,
-    .ff textarea,
-    .ff select {
-      background: rgba(22,48,85,0.22);
-      border: 1px solid rgba(200,160,90,0.12);
-      padding: 0.8rem 0.9rem;
-      color: var(--cor-texto-claro);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.85rem;
-      outline: none;
-      transition: border-color 0.3s;
-      resize: vertical;
-    }
-
-    .ff input:focus,
-    .ff textarea:focus { border-color: rgba(200,160,90,0.4); }
-
-    .ff textarea { min-height: 110px; }
-    .ff select { appearance: none; cursor: pointer; }
-    .ff select option { background: var(--cor-fundo-claro); }
-
-    .btn-submit {
-      align-self: flex-start;
-      padding: 0.85rem 2.2rem;
-      background: var(--cor-dourado);
-      color: var(--cor-fundo);
-      border: none;
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      transition: all 0.3s;
-    }
-
-    .btn-submit:hover {
-      background: var(--cor-dourado-claro);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(200,160,90,0.2);
-    }
-
-    /* ═══════════════════════════════════════════════════════════════════
-       FOOTER
-       ═══════════════════════════════════════════════════════════════════ */
-    footer {
-      padding: 2rem 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 1px solid rgba(200,160,90,0.08);
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    footer p {
-      font-size: 0.7rem;
-      color: var(--cor-texto-suave);
-    }
-
-    .footer-brand {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.9rem;
-      color: var(--cor-dourado);
-      letter-spacing: 0.08em;
-    }
-
-    /* ═══════════════════════════════════════════════════════════════════
-       ANIMAÇÕES DE REVEAL
-       ═══════════════════════════════════════════════════════════════════ */
-    .reveal {
-      opacity: 0;
-      transform: translateY(25px);
-      transition: opacity 0.7s, transform 0.7s;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .reveal-d1 { transition-delay: 0.1s; }
-    .reveal-d2 { transition-delay: 0.2s; }
-    .reveal-d3 { transition-delay: 0.3s; }
-    .reveal-d4 { transition-delay: 0.4s; }
-    .reveal-d5 { transition-delay: 0.5s; }
-
-    /* ═══════════════════════════════════════════════════════════════════
-       RESPONSIVO
-       ═══════════════════════════════════════════════════════════════════ */
-    @media (max-width: 900px) {
-      .nav-links { display: none; }
-      .menu-btn { display: block; }
-      
-      #sobre { grid-template-columns: 1fr; gap: 2.5rem; }
-      #contato { grid-template-columns: 1fr; gap: 3rem; }
-      .dep-grid { grid-template-columns: 1fr; }
-      .locais-grid { grid-template-columns: 1fr 1fr; }
-      
-      .rings, .hero-slab { display: none; }
-    }
-
-    @media (max-width: 600px) {
-      .locais-grid { grid-template-columns: 1fr; }
-      .stats-block { grid-template-columns: 1fr 1fr; }
-      h1 { font-size: 2.2rem; }
-      section { padding: 4rem 5%; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Taiuã Milan | Cirurgião do Quadril · Santa Catarina</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A; --navy-mid: #1A2E45;
+    --gold: #B8963E; --gold-light: #D4AF6A;
+    --cream: #F7F3EE; --warm-white: #FDFAF7;
+    --text-dark: #1A1A1A; --text-mid: #4A4A52; --text-light: #8A8A96;
+    --border: rgba(184,150,62,0.2);
+    --transition: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--text-dark); overflow-x: hidden; }
+
+  /* NAV */
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 60px; height: 80px; background: rgba(13,27,42,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(184,150,62,0.15); transition: all 0.4s var(--transition); }
+  .nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .nav-logo-mark { width: 40px; height: 40px; border: 1.5px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 15px; font-weight: 600; color: var(--gold); }
+  .nav-name { display: flex; flex-direction: column; gap: 2px; }
+  .nav-name span:first-child { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 500; color: var(--cream); }
+  .nav-name span:last-child { font-size: 10px; font-weight: 300; color: var(--gold-light); letter-spacing: 2px; text-transform: uppercase; }
+  .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 11.5px; font-weight: 400; color: rgba(247,243,238,0.7); text-decoration: none; letter-spacing: 1.8px; text-transform: uppercase; transition: color 0.3s; position: relative; }
+  .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s; }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-cta { padding: 10px 22px; background: transparent; border: 1px solid var(--gold); color: var(--gold) !important; font-size: 11px !important; letter-spacing: 2px !important; text-transform: uppercase; text-decoration: none; transition: all 0.3s; font-family: 'DM Sans', sans-serif; }
+  .nav-cta:hover { background: var(--gold) !important; color: var(--navy) !important; }
+
+  /* HERO */
+  .hero { min-height: 100vh; background: var(--navy); position: relative; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; }
+  .hero-bg-lines { position: absolute; inset: 0; background-image: linear-gradient(rgba(184,150,62,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(184,150,62,0.04) 1px, transparent 1px); background-size: 80px 80px; pointer-events: none; }
+  .hero-bg-accent { position: absolute; right: -200px; top: -200px; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(184,150,62,0.07) 0%, transparent 70%); pointer-events: none; }
+  .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 140px 80px 100px 80px; position: relative; z-index: 2; }
+  .hero-eyebrow { display: flex; align-items: center; gap: 14px; margin-bottom: 36px; }
+  .hero-eyebrow-line { width: 40px; height: 1px; background: var(--gold); }
+  .hero-eyebrow span { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 400; }
+  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(46px, 4.8vw, 70px); font-weight: 300; color: var(--cream); line-height: 1.1; margin-bottom: 28px; }
+  .hero-title em { font-style: italic; color: var(--gold-light); }
+  .hero-subtitle { font-size: 16px; font-weight: 300; color: rgba(247,243,238,0.6); line-height: 1.85; max-width: 440px; margin-bottom: 54px; }
+  .hero-actions { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+  .btn-primary { padding: 16px 38px; background: var(--gold); color: var(--navy); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; border: none; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s; font-family: 'DM Sans', sans-serif; }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 20px 40px rgba(184,150,62,0.25); }
+  .btn-secondary { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: rgba(247,243,238,0.65); text-decoration: none; display: flex; align-items: center; gap: 10px; transition: color 0.3s; font-weight: 300; }
+  .btn-secondary:hover { color: var(--gold-light); }
+  .hero-stats { margin-top: 72px; display: flex; gap: 50px; border-top: 1px solid rgba(184,150,62,0.15); padding-top: 40px; }
+  .hero-stat-num { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 300; color: var(--gold-light); line-height: 1; }
+  .hero-stat-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(247,243,238,0.4); margin-top: 6px; font-weight: 300; }
+  .hero-right { position: relative; overflow: hidden; }
+  .hero-image-container { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1A3A5C 0%, #0A1829 100%); overflow: hidden; }
+  .hero-image-container img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+  .hero-image-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, var(--navy) 0%, rgba(13,27,42,0.25) 55%, transparent 100%); }
+  .hero-badge { position: absolute; bottom: 60px; right: 50px; background: rgba(247,243,238,0.06); backdrop-filter: blur(20px); border: 1px solid rgba(184,150,62,0.2); padding: 22px 30px; display: flex; align-items: center; gap: 16px; }
+  .hero-badge-icon { font-size: 26px; }
+  .hero-badge-text span:first-child { display: block; font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; color: var(--cream); }
+  .hero-badge-text span:last-child { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); font-weight: 300; }
+
+  /* CITIES BAR */
+  .cities-bar { background: var(--navy); border-top: 1px solid rgba(184,150,62,0.1); padding: 0 80px; }
+  .cities-bar-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; }
+  .cities-bar-label { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); font-weight: 400; white-space: nowrap; padding: 18px 28px 18px 0; border-right: 1px solid rgba(184,150,62,0.15); margin-right: 28px; }
+  .cities-list { display: flex; gap: 10px; align-items: center; list-style: none; padding: 12px 0; flex-wrap: wrap; }
+  .cities-list li { display: flex; }
+  .city-btn { font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase; color: rgba(247,243,238,0.5); font-weight: 300; text-decoration: none; padding: 7px 16px; border: 1px solid rgba(184,150,62,0.15); display: flex; align-items: center; gap: 7px; transition: all 0.3s var(--transition); background: transparent; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+  .city-btn::before { content: '◆'; font-size: 5px; color: var(--gold); opacity: 0.6; }
+  .city-btn:hover { color: var(--gold-light); border-color: rgba(184,150,62,0.4); background: rgba(184,150,62,0.07); }
+
+  /* SEÇÕES */
+  .section { padding: 120px 80px; }
+  .section-inner { max-width: 1280px; margin: 0 auto; }
+  .section-tag { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+  .section-tag::before { content: ''; width: 28px; height: 1px; background: var(--gold); }
+  .section-tag span { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 400; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(34px, 3.5vw, 50px); font-weight: 300; line-height: 1.2; color: var(--navy); }
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  /* SOBRE */
+  .about { background: var(--cream); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 100px; align-items: center; }
+  .about-image-wrap { position: relative; }
+  .about-image { width: 100%; aspect-ratio: 3/4; background: linear-gradient(135deg, #1A2E45, #0D1B2A); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .about-image img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+  .about-image-frame { position: absolute; bottom: -24px; right: -24px; width: calc(100% - 40px); height: calc(100% - 40px); border: 1px solid var(--gold); pointer-events: none; z-index: -1; }
+  .about-credential { position: relative; top: auto; left: auto; width: 100%; background: var(--navy); padding: 18px 24px; display: flex; flex-direction: column; gap: 3px; border-left: 3px solid var(--gold); margin-top: 0; }
+  .about-credential span:first-child { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--gold-light); font-weight: 300; }
+  .about-credential span:last-child { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(247,243,238,0.45); font-weight: 300; }
+  .about-content { display: flex; flex-direction: column; gap: 28px; }
+  .about-bio { font-size: 16.5px; font-weight: 300; color: var(--text-mid); line-height: 1.88; }
+  .about-bio strong { color: var(--navy); font-weight: 500; }
+  .about-credentials-list { display: flex; flex-direction: column; gap: 14px; border-top: 1px solid var(--border); padding-top: 28px; }
+  .about-cred-item { display: flex; align-items: flex-start; gap: 14px; }
+  .about-cred-dot { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; margin-top: 8px; flex-shrink: 0; }
+  .about-cred-text { font-size: 14px; color: var(--text-mid); line-height: 1.6; font-weight: 300; }
+  .about-cred-text strong { color: var(--navy); font-weight: 500; }
+
+  /* PATOLOGIAS */
+  .specialties { background: var(--navy); }
+  .spec-grid { display: flex; flex-direction: column; gap: 2px; margin-top: 60px; }
+  .spec-card { display: block; text-decoration: none; background: rgba(247,243,238,0.03); border: 1px solid rgba(184,150,62,0.1); cursor: pointer; transition: background 0.3s; position: relative; overflow: hidden; }
+  .spec-card:hover { background: rgba(184,150,62,0.05); }
+  .spec-card.open { background: rgba(184,150,62,0.07); border-color: rgba(184,150,62,0.25); }
+  .spec-header { display: flex; align-items: center; justify-content: space-between; padding: 36px 48px; gap: 20px; }
+  .spec-header-left { display: flex; align-items: center; gap: 24px; }
+  .spec-icon { display: none; }
+  .spec-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--cream); }
+  .spec-desc { font-size: 13.5px; font-weight: 300; color: rgba(247,243,238,0.45); margin-top: 5px; line-height: 1.6; }
+  .spec-toggle { width: 32px; height: 32px; flex-shrink: 0; border: 1px solid rgba(184,150,62,0.25); display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--gold); transition: all 0.35s; }
+  .spec-card.open .spec-toggle { background: var(--gold); color: var(--navy); transform: rotate(45deg); }
+  .spec-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--gold); transform: scaleY(0); transition: transform 0.4s var(--transition); transform-origin: top; }
+  .spec-card.open::before { transform: scaleY(1); }
+  .spec-body { max-height: 0; overflow: hidden; transition: max-height 0.55s var(--transition); }
+  .spec-card.open .spec-body { max-height: 3000px; }
+  .spec-body-inner { padding: 0 48px 48px; border-top: 1px solid rgba(184,150,62,0.1); }
+  .spec-nav { display: flex; flex-wrap: wrap; margin-bottom: 40px; padding-top: 28px; border-bottom: 1px solid rgba(184,150,62,0.1); }
+  .spec-nav-pill { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(247,243,238,0.4); padding: 12px 20px 12px 0; margin-right: 20px; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.3s; font-weight: 300; background: none; border-top: none; border-left: none; border-right: none; font-family: 'DM Sans', sans-serif; }
+  .spec-nav-pill:hover { color: var(--gold); border-bottom-color: var(--gold); }
+  .spec-blocks { display: flex; flex-direction: column; }
+  .spec-block { padding: 36px 0; border-bottom: 1px solid rgba(184,150,62,0.08); }
+  .spec-block:last-child { border-bottom: none; padding-bottom: 0; }
+  .spec-block-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 300; color: var(--cream); margin-bottom: 18px; display: flex; align-items: center; gap: 14px; }
+  .spec-block-title::before { content: ''; width: 20px; height: 1px; background: var(--gold); flex-shrink: 0; }
+  .spec-block-body { font-size: 14.5px; font-weight: 300; color: rgba(247,243,238,0.6); line-height: 1.9; }
+  .spec-block-body p { margin-bottom: 14px; }
+  .spec-block-body p:last-child { margin-bottom: 0; }
+  .spec-block-body strong { color: var(--cream); font-weight: 500; }
+  .spec-block-body ul { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 14px 0; padding: 0; }
+  .spec-block-body ul li { display: flex; align-items: flex-start; gap: 12px; }
+  .spec-block-body ul li::before { content: ''; width: 5px; height: 5px; background: var(--gold); border-radius: 50%; margin-top: 9px; flex-shrink: 0; }
+  .spec-block-body .hbox { background: rgba(184,150,62,0.08); border-left: 3px solid var(--gold); padding: 20px 24px; margin: 18px 0; }
+  .spec-block-body .hbox p { margin-bottom: 0; }
+  .spec-cta { margin-top: 36px; padding-top: 32px; border-top: 1px solid rgba(184,150,62,0.12); display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .spec-cta-btn { padding: 13px 28px; background: var(--gold); color: var(--navy); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; text-decoration: none; transition: all 0.3s; font-family: 'DM Sans', sans-serif; }
+  .spec-cta-btn:hover { background: var(--gold-light); }
+  .spec-cta-outline { padding: 13px 28px; border: 1px solid rgba(184,150,62,0.3); color: var(--gold); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; font-weight: 300; text-decoration: none; transition: all 0.3s; font-family: 'DM Sans', sans-serif; }
+  .spec-cta-outline:hover { border-color: var(--gold); background: rgba(184,150,62,0.08); }
+
+  /* PROCEDIMENTOS */
+  .procedures { background: var(--warm-white); }
+  .proc-layout { display: grid; grid-template-columns: 320px 1fr; gap: 80px; margin-top: 60px; align-items: start; }
+  .proc-sidebar { position: sticky; top: 120px; display: flex; flex-direction: column; gap: 4px; }
+  .proc-tab { padding: 16px 22px; border: none; background: transparent; text-align: left; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 400; color: var(--text-light); border-left: 2px solid transparent; transition: all 0.3s; }
+  .proc-tab:hover { color: var(--navy); background: var(--cream); }
+  .proc-tab.active { color: var(--navy); border-left-color: var(--gold); background: var(--cream); font-weight: 500; }
+  .proc-panel { display: none; }
+  .proc-panel.active { display: block; }
+  .proc-panel-title { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 300; color: var(--navy); margin-bottom: 18px; }
+  .proc-panel-desc { font-size: 15.5px; font-weight: 300; color: var(--text-mid); line-height: 1.85; margin-bottom: 34px; max-width: 580px; }
+  .proc-details { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .proc-detail-card { background: var(--cream); padding: 26px; border-left: 2px solid var(--gold); }
+  .proc-detail-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 7px; font-weight: 400; }
+  .proc-detail-value { font-family: 'Cormorant Garamond', serif; font-size: 19px; color: var(--navy); font-weight: 400; }
+  .proc-detail-sub { font-size: 13px; color: var(--text-light); margin-top: 3px; font-weight: 300; }
+
+  /* DIFERENCIAIS */
+  .differentials { background: var(--cream); }
+  .diff-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; margin-top: 60px; border: 1px solid var(--border); }
+  .diff-item { padding: 52px 48px; border: 1px solid var(--border); position: relative; transition: background 0.3s; }
+  .diff-item:hover { background: rgba(184,150,62,0.04); }
+  .diff-number { font-family: 'Cormorant Garamond', serif; font-size: 60px; font-weight: 300; color: rgba(184,150,62,0.1); position: absolute; top: 24px; right: 30px; line-height: 1; }
+  .diff-icon { font-size: 30px; margin-bottom: 18px; display: block; }
+  .diff-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--navy); margin-bottom: 12px; }
+  .diff-desc { font-size: 14px; font-weight: 300; color: var(--text-mid); line-height: 1.8; }
+
+  /* CONSULTÓRIOS */
+  .offices { background: var(--navy); }
+  .offices .section-title { color: var(--cream); }
+  .offices-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 60px; }
+  [id^="office-"] { scroll-margin-top: 100px; }
+  @keyframes office-highlight { 0% { background: rgba(184,150,62,0.14); } 100% { background: rgba(247,243,238,0.03); } }
+  .office-card.highlighted { animation: office-highlight 1.6s ease-out forwards; }
+  .office-card { background: rgba(247,243,238,0.03); border: 1px solid rgba(184,150,62,0.12); padding: 44px 40px; transition: all 0.3s; position: relative; overflow: hidden; }
+  .office-card::after { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--gold); transform: scaleY(0); transition: transform 0.4s var(--transition); }
+  .office-card:hover { background: rgba(184,150,62,0.05); }
+  .office-card:hover::after { transform: scaleY(1); }
+  .office-city { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; color: var(--gold-light); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+  .office-clinic { font-size: 14px; font-weight: 500; color: var(--cream); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
+  .office-address { font-size: 14px; font-weight: 300; color: rgba(247,243,238,0.5); line-height: 1.6; margin-bottom: 20px; }
+  .office-contacts { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+  .office-contact-row { display: flex; align-items: center; gap: 10px; }
+  .office-contact-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 400; width: 72px; flex-shrink: 0; }
+  .office-contact-value { font-size: 14px; color: rgba(247,243,238,0.75); font-weight: 300; text-decoration: none; transition: color 0.3s; }
+  .office-contact-value:hover { color: var(--gold-light); }
+  .office-contact-divider { height: 1px; background: rgba(184,150,62,0.1); margin: 8px 0; }
+
+  /* DEPOIMENTOS */
+  .testimonials { background: var(--warm-white); }
+  .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; }
+  .test-card { background: var(--cream); border: 1px solid var(--border); padding: 40px 34px; }
+  .test-quote-mark { font-family: 'Cormorant Garamond', serif; font-size: 72px; font-weight: 300; color: rgba(184,150,62,0.18); line-height: 0.5; margin-bottom: 18px; display: block; }
+  .test-text { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 300; font-style: italic; color: var(--text-mid); line-height: 1.8; margin-bottom: 24px; }
+  .test-stars { color: var(--gold); font-size: 12px; letter-spacing: 3px; margin-bottom: 16px; display: block; }
+  .test-patient { display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--border); padding-top: 20px; }
+  .test-avatar { width: 40px; height: 40px; border-radius: 50%; background: rgba(184,150,62,0.12); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--gold); font-weight: 400; flex-shrink: 0; }
+  .test-name { font-size: 14px; color: var(--navy); font-weight: 500; margin-bottom: 2px; }
+  .test-info { font-size: 12px; color: var(--text-light); font-weight: 300; }
+
+  /* FAQ */
+  .faq { background: var(--cream); }
+  .faq-layout { display: grid; grid-template-columns: 1fr 1.5fr; gap: 100px; align-items: start; }
+  .faq-intro { position: sticky; top: 120px; }
+  .faq-intro-text { font-size: 15.5px; font-weight: 300; color: var(--text-mid); line-height: 1.85; margin-top: 22px; }
+  .faq-list { display: flex; flex-direction: column; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-question { width: 100%; padding: 26px 0; background: none; border: none; text-align: left; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 15.5px; font-weight: 400; color: var(--navy); display: flex; justify-content: space-between; align-items: center; gap: 20px; transition: color 0.3s; }
+  .faq-question:hover { color: var(--gold); }
+  .faq-toggle { width: 26px; height: 26px; flex-shrink: 0; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 16px; color: var(--gold); transition: all 0.3s; }
+  .faq-item.open .faq-toggle { background: var(--gold); color: var(--navy); transform: rotate(45deg); }
+  .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s var(--transition); }
+  .faq-item.open .faq-answer { max-height: 300px; }
+  .faq-answer-inner { padding: 0 0 26px; font-size: 14.5px; font-weight: 300; color: var(--text-mid); line-height: 1.8; }
+
+  /* AGENDAMENTO */
+  .booking { background: var(--navy); position: relative; overflow: hidden; }
+  .booking-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(184,150,62,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(184,150,62,0.03) 1px, transparent 1px); background-size: 60px 60px; }
+  .booking-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; position: relative; z-index: 2; }
+  .booking .section-title { color: var(--cream); }
+  .booking-perks { margin-top: 36px; display: flex; flex-direction: column; gap: 18px; }
+  .booking-perk { display: flex; align-items: center; gap: 16px; }
+  .booking-perk-icon { width: 40px; height: 40px; background: rgba(184,150,62,0.1); border: 1px solid rgba(184,150,62,0.2); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .booking-perk-text { font-size: 14px; font-weight: 300; color: rgba(247,243,238,0.6); line-height: 1.6; }
+  .booking-perk-text strong { color: var(--cream); font-weight: 400; }
+  .booking-form { background: rgba(247,243,238,0.04); border: 1px solid rgba(184,150,62,0.15); padding: 48px 44px; }
+  .form-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 400; color: var(--cream); margin-bottom: 32px; }
+  .form-group { margin-bottom: 22px; }
+  .form-label { display: block; margin-bottom: 7px; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); font-weight: 400; }
+  .form-input { width: 100%; padding: 13px 16px; background: rgba(247,243,238,0.06); border: 1px solid rgba(184,150,62,0.2); color: var(--cream); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300; outline: none; transition: border-color 0.3s; }
+  .form-input:focus { border-color: var(--gold); }
+  .form-input::placeholder { color: rgba(247,243,238,0.22); }
+  option { background: var(--navy); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-submit { width: 100%; padding: 16px; background: var(--gold); color: var(--navy); border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; transition: all 0.3s; margin-top: 6px; }
+  .form-submit:hover { background: var(--gold-light); box-shadow: 0 12px 40px rgba(184,150,62,0.3); }
+
+  /* FOOTER */
+  footer { background: #080F18; padding: 80px; border-top: 1px solid rgba(184,150,62,0.1); }
+  .footer-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 56px; }
+  .footer-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--cream); margin-bottom: 3px; }
+  .footer-brand-title { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 300; }
+  .footer-crm { margin-top: 8px; font-size: 12px; color: rgba(247,243,238,0.3); font-weight: 300; }
+  .footer-bio { margin-top: 18px; font-size: 13.5px; font-weight: 300; color: rgba(247,243,238,0.38); line-height: 1.75; max-width: 280px; }
+  .footer-socials { display: flex; gap: 10px; margin-top: 24px; }
+  .footer-social { width: 34px; height: 34px; border: 1px solid rgba(184,150,62,0.18); display: flex; align-items: center; justify-content: center; font-size: 13px; color: rgba(247,243,238,0.45); text-decoration: none; transition: all 0.3s; }
+  .footer-social:hover { border-color: var(--gold); color: var(--gold); }
+  .footer-col-title { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 400; margin-bottom: 22px; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+  .footer-links a { font-size: 13.5px; font-weight: 300; color: rgba(247,243,238,0.42); text-decoration: none; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--gold-light); }
+  .footer-bottom { max-width: 1280px; margin: 52px auto 0; padding-top: 26px; border-top: 1px solid rgba(184,150,62,0.08); display: flex; justify-content: space-between; align-items: center; }
+  .footer-bottom p { font-size: 12px; color: rgba(247,243,238,0.18); font-weight: 300; }
+  .footer-bottom-links { display: flex; gap: 24px; list-style: none; }
+  .footer-bottom-links a { font-size: 12px; color: rgba(247,243,238,0.18); text-decoration: none; font-weight: 300; transition: color 0.3s; }
+  .footer-bottom-links a:hover { color: var(--gold); }
+
+  /* WHATSAPP */
+  .whatsapp-float { position: fixed; bottom: 32px; right: 32px; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; box-shadow: 0 8px 32px rgba(37,211,102,0.4); cursor: pointer; z-index: 99; transition: all 0.3s; text-decoration: none; animation: float-in 1s 2s backwards; }
+  @keyframes float-in { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  .whatsapp-float:hover { transform: scale(1.1); }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s var(--transition), transform 0.7s var(--transition); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.12s; }
+  .reveal-delay-2 { transition-delay: 0.24s; }
+  .reveal-delay-3 { transition-delay: 0.36s; }
+  .hero-left > * { animation: hero-up 0.8s var(--transition) backwards; }
+  .hero-eyebrow { animation-delay: 0.1s; } .hero-title { animation-delay: 0.25s; } .hero-subtitle { animation-delay: 0.4s; } .hero-actions { animation-delay: 0.55s; } .hero-stats { animation-delay: 0.7s; }
+  @keyframes hero-up { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* RESPONSIVE */
+
+  /* ── HAMBURGER ── */
+  .nav-hamburger {
+    display: none; flex-direction: column; justify-content: center; align-items: center;
+    gap: 5px; width: 44px; height: 44px; background: none; border: none;
+    cursor: pointer; padding: 8px; z-index: 200;
+  }
+  .nav-hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--warm-white); border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  .nav-hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.active span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ── MOBILE OVERLAY ── */
+  .nav-mobile-overlay {
+    display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+    z-index: 150; backdrop-filter: blur(2px);
+  }
+  .nav-mobile-overlay.active { display: block; }
+
+  /* ── MOBILE MENU ── */
+  .nav-mobile-menu {
+    display: flex; flex-direction: column;
+    position: fixed; top: 0; right: -100%; width: 80%; max-width: 320px; height: 100dvh;
+    background: var(--navy); z-index: 160;
+    padding: 90px 32px 40px;
+    gap: 0; transition: right 0.35s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: -8px 0 40px rgba(0,0,0,0.4);
+    border-left: 1px solid rgba(184,150,62,0.15);
+    overflow-y: auto;
+  }
+  .nav-mobile-menu.active { right: 0; }
+  .nav-mobile-menu a {
+    color: rgba(247,243,238,0.75); font-size: 1rem;
+    padding: 1rem 0; border-bottom: 1px solid rgba(184,150,62,0.1);
+    text-decoration: none; letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .nav-mobile-menu a:hover { color: var(--gold-light); }
+  .nav-mobile-menu .nav-mobile-cta {
+    margin-top: 1.5rem; border: none;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--navy) !important; text-align: center;
+    padding: 1rem; border-radius: 6px;
+    font-weight: 600; letter-spacing: 0.04em;
+  }
+
+  /* ── TABLET 1024px ── */
+  @media (max-width: 1024px) {
+    .nav { padding: 0 32px; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .section { padding: 80px 32px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 120px 32px 72px; }
+    .cities-bar { padding: 0 32px; }
+    .about-grid, .faq-layout, .booking-inner, .footer-inner { grid-template-columns: 1fr; gap: 48px; }
+    .faq-intro { position: static; }
+    .proc-layout { grid-template-columns: 1fr; }
+    .proc-sidebar { flex-direction: row; flex-wrap: wrap; position: static; }
+    .test-grid, .offices-grid { grid-template-columns: 1fr 1fr; }
+    .diff-grid { grid-template-columns: 1fr; }
+    footer { padding: 60px 32px; }
+    .footer-bottom { flex-direction: column; gap: 14px; text-align: center; }
+  }
+
+  /* ── MOBILE 640px ── */
+  @media (max-width: 640px) {
+    .nav { padding: 0 20px; height: 66px; }
+    .section { padding: 60px 20px; }
+    .hero-left { padding: 100px 20px 60px; }
+    .hero-title { font-size: clamp(2rem, 9vw, 2.8rem); line-height: 1.15; }
+    .hero-subtitle { font-size: 0.95rem; margin-bottom: 36px; }
+    .hero-stats { gap: 20px; flex-wrap: wrap; }
+    .hero-stat-num { font-size: 1.8rem; }
+    .hero-actions { flex-direction: column; gap: 12px; }
+    .hero-actions .btn-primary,
+    .hero-actions .btn-secondary { width: 100%; text-align: center; padding: 14px 20px; }
+    .cities-bar { padding: 0 20px; }
+    .cities-bar-inner { gap: 8px; flex-wrap: wrap; }
+    .city-btn { font-size: 0.75rem; padding: 6px 14px; }
+    .about-image-wrap { max-width: 320px; margin: 0 auto; }
+    .spec-header { padding: 20px 18px; }
+    .spec-body-inner { padding: 0 18px 28px; }
+    .spec-tabs { gap: 6px; }
+    .proc-sidebar { gap: 8px; }
+    .proc-tab { font-size: 0.8rem; padding: 8px 14px; }
+    .test-grid, .offices-grid, .proc-details, .form-row { grid-template-columns: 1fr; }
+    .diff-grid { grid-template-columns: 1fr; }
+    .diff-item { border-right: none !important; border-bottom: 1px solid var(--border); }
+    .office-card { padding: 24px 20px; }
+    .booking-form { padding: 28px 20px; }
+    .form-input, .form-select { font-size: 16px; } /* evita zoom no iOS */
+    footer { padding: 48px 20px 32px; }
+    .footer-inner { gap: 36px; }
+    .footer-grid-col { gap: 8px; }
+    .whatsapp-float { bottom: 20px; right: 16px; width: 50px; height: 50px; font-size: 22px; }
+    .section-eyebrow { font-size: 0.68rem; }
+    .section-title { font-size: clamp(1.8rem, 7vw, 2.4rem); }
+  }
+
+  /* ── SMALL MOBILE 390px ── */
+  @media (max-width: 390px) {
+    .hero-title { font-size: 1.9rem; }
+    .nav-mobile-menu { width: 90%; }
+    .hero-stats { justify-content: center; }
+    .city-btn { font-size: 0.7rem; padding: 5px 10px; }
+  }
+</style>
 </head>
 <body>
 
-<!-- NAVEGAÇÃO -->
-<nav>
-  <a href="#" class="nav-brand">Dr. Taiuã Milan</a>
+<nav class="nav" id="nav">
+  <a href="#hero" class="nav-brand">
+    <div class="nav-logo-mark">TM</div>
+    <div class="nav-name"><span>Dr. Taiuã Milan</span><span>Cirurgião do Quadril · Santa Catarina</span></div>
+  </a>
   <ul class="nav-links">
     <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#especialidades">Especialidades</a></li>
-    <li><a href="#formacao">Formação</a></li>
-    <li><a href="#locais">Locais</a></li>
-    <li><a href="#contato" class="nav-cta">Agendar Consulta</a></li>
+    <li><a href="#especialidades">Patologias</a></li>
+    <li><a href="#procedimentos">Procedimentos</a></li>
+    <li><a href="#consultorios">Consultórios</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#agendamento" class="nav-cta">Agendar Consulta</a></li>
   </ul>
-  <button class="menu-btn">☰</button>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menu" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-mobile-overlay" id="navOverlay" onclick="closeMobileMenu()"></div>
+<div class="nav-mobile-menu" id="navMobileMenu">
+  <a href="#sobre" onclick="closeMobileMenu()">Sobre</a>
+  <a href="#especialidades" onclick="closeMobileMenu()">Patologias</a>
+  <a href="#procedimentos" onclick="closeMobileMenu()">Procedimentos</a>
+  <a href="#consultorios" onclick="closeMobileMenu()">Consultórios</a>
+  <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
+  <a href="#agendamento" class="nav-mobile-cta" onclick="closeMobileMenu()">Agendar Consulta →</a>
+</div>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-slab"></div>
-  
-  <div class="rings">
-    <div class="ring"></div>
-    <div class="ring"></div>
-    <div class="ring"></div>
-    <div class="ring-line h"></div>
-    <div class="ring-line v"></div>
-    <div class="ring-dot"></div>
-  </div>
-
-  <div class="hero-content">
-    <div class="hero-eyebrow">Ortopedia & Cirurgia do Quadril</div>
-    
-    <h1>
-      <span class="dr">Dr.</span>
-      <span class="name">Taiuã Milan</span>
-      <span class="hero-subtitle">Especialista em Cirurgia do Quadril</span>
-    </h1>
-    
-    <span class="hero-crm">CRM/SC 21639 · RQE 15964 · TEOT 16353</span>
-    
-    <p class="hero-desc">
-      Cirurgião dedicado ao diagnóstico e tratamento das doenças da articulação coxofemoral — unindo precisão técnica, tecnologia de ponta e cuidado humanizado para devolver mobilidade e qualidade de vida.
-    </p>
-    
+<section class="hero" id="hero">
+  <div class="hero-bg-lines"></div>
+  <div class="hero-bg-accent"></div>
+  <div class="hero-left">
+    <div class="hero-eyebrow"><div class="hero-eyebrow-line"></div><span>Referência em Cirurgia do Quadril · SC</span></div>
+    <h1 class="hero-title">Especialista em<br><em>Cirurgia do Quadril</em><br>em Santa Catarina</h1>
+    <p class="hero-subtitle">Técnica cirúrgica precisa e atualizada, diagnóstico criterioso e acompanhamento individualizado. Atendimento em Itajaí, Balneário Camboriú, Brusque e Joinville.</p>
     <div class="hero-actions">
-      <a href="#contato" class="btn-primary">
-        Agendar Consulta
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-      <a href="#sobre" class="btn-outline">Conheça o Especialista</a>
+      <a href="#agendamento" class="btn-primary">Agendar Consulta →</a>
+      <a href="#sobre" class="btn-secondary">Conheça o Dr. Taiuã →</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="hero-stat-num">+10</div><div class="hero-stat-label">Anos de Experiência</div></div>
+      <div><div class="hero-stat-num">5★</div><div class="hero-stat-label">Avaliação Média</div></div>
+      <div><div class="hero-stat-num">4</div><div class="hero-stat-label">Cidades em SC</div></div>
     </div>
   </div>
-  
-  <div class="scroll-hint">
-    <div class="scroll-line"></div>
-    <span>Scroll</span>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- SOBRE -->
-<section id="sobre">
-  <div class="sobre-visual reveal">
-    <div class="stats-block">
-      <div class="stat">
-        <div class="stat-n">10<sup>+</sup></div>
-        <div class="stat-l">Anos de experiência</div>
-      </div>
-      <div class="stat">
-        <div class="stat-n">7</div>
-        <div class="stat-l">Locais de atendimento</div>
-      </div>
-      <div class="stat">
-        <div class="stat-n">3</div>
-        <div class="stat-l">Estados cobertos</div>
-      </div>
-      <div class="stat">
-        <div class="stat-n">SBOT</div>
-        <div class="stat-l">Membro titular</div>
-      </div>
+  <div class="hero-right">
+    <div class="hero-image-container">
+      <img src="IMG_4906 okok.jpg" alt="Dr. Taiuã Milan — Cirurgião do Quadril" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" />
     </div>
-  </div>
-
-  <div class="sobre-text reveal reveal-d2">
-    <span class="label">Sobre mim</span>
-    <h2>Movimento é vida.<br><em>Devolvê-lo é minha missão.</em></h2>
-    <p>Sou cirurgião especializado na avaliação e tratamento das doenças da articulação coxofemoral. Atuo no diagnóstico diferencial e no manejo cirúrgico e conservador de toda a gama de patologias do quadril.</p>
-    <p>Formado pela UNIDERP (2013), com residência em Ortopedia e Traumatologia no Hospital Marieta Konder Bornhausen e subespecialidade em Cirurgia do Quadril no Hospital Angelina Caron, em Curitiba.</p>
-    <p>Falo português, inglês e espanhol, e realizo atendimento tanto presencial quanto por teleconsulta.</p>
-    <div class="sobre-badges">
-      <span class="badge">Artroscopia do Quadril</span>
-      <span class="badge">Artroplastia Total</span>
-      <span class="badge">Cirurgia Minimamente Invasiva</span>
-      <span class="badge">Revisão de Próteses</span>
-      <span class="badge">Fraturas Complexas</span>
-      <span class="badge">Teleconsulta</span>
+    <div class="hero-image-overlay"></div>
+    <div class="hero-badge">
+      <div class="hero-badge-icon">🏥</div>
+      <div class="hero-badge-text"><span>Residência em Cirurgia do Quadril</span><span>Sociedade Hosp. Angelina Caron</span></div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- ESPECIALIDADES -->
-<section id="especialidades">
-  <div class="section-head reveal">
-    <span class="label">Habilidades & Especialidades</span>
-    <h2>Áreas de Atuação</h2>
+<div class="cities-bar">
+  <div class="cities-bar-inner">
+    <div class="cities-bar-label">Consultórios em SC</div>
+    <ul class="cities-list">
+      <li><a href="#office-itajai" class="city-btn">Itajaí</a></li>
+      <li><a href="#office-bc" class="city-btn">Balneário Camboriú</a></li>
+      <li><a href="#office-brusque" class="city-btn">Brusque</a></li>
+      <li><a href="#office-joinville" class="city-btn">Joinville</a></li>
+    </ul>
   </div>
+</div>
 
-  <div class="trat-list reveal">
-    <!-- Artroplastia -->
-    <div class="trat-item" id="trat-01">
-      <button class="trat-trigger" onclick="toggleTrat('trat-01')">
-        <div class="trat-trigger-left">
-          <span class="trat-num">01</span>
-          <div>
-            <span class="trat-label-tag">Cirurgia de Alta Complexidade</span>
-            <span class="trat-title">Artroplastia Total do Quadril</span>
-          </div>
-        </div>
-        <div class="trat-arrow">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </div>
-      </button>
-      <div class="trat-panel">
-        <div class="trat-panel-inner">
-          <div class="trat-tabs">
-            <button class="trat-tab-btn active" onclick="switchTab(this, 0)">O que é</button>
-            <button class="trat-tab-btn" onclick="switchTab(this, 1)">Indicações</button>
-            <button class="trat-tab-btn" onclick="switchTab(this, 2)">Procedimento</button>
-            <button class="trat-tab-btn" onclick="switchTab(this, 3)">Recuperação</button>
-          </div>
-          <div class="trat-tab-panel active">
-            <h4>O que é a Artroplastia Total do Quadril?</h4>
-            <p>A artroplastia total do quadril é o procedimento cirúrgico no qual a articulação coxofemoral desgastada ou danificada é substituída por componentes protéticos de alta performance — geralmente compostos por uma haste femoral metálica, uma cabeça esférica e uma cúpula acetabular.</p>
-            <p>É considerada uma das cirurgias com maior impacto na qualidade de vida, devolvendo mobilidade, eliminando a dor crônica e permitindo ao paciente retornar às atividades cotidianas em poucas semanas.</p>
-          </div>
-          <div class="trat-tab-panel">
-            <h4>Quando a cirurgia é indicada?</h4>
-            <p>A artroplastia é indicada quando tratamentos conservadores não controlam mais a dor ou a limitação funcional:</p>
-            <ul>
-              <li>Dor intensa no quadril que persiste em repouso ou à noite</li>
-              <li>Dificuldade para caminhar, subir escadas ou calçar sapatos</li>
-              <li>Rigidez articular que limita a amplitude de movimento</li>
-              <li>Deformidade progressiva do membro inferior</li>
-            </ul>
-          </div>
-          <div class="trat-tab-panel">
-            <h4>Como é realizada a cirurgia?</h4>
-            <p>O procedimento é realizado sob anestesia raquidiana ou geral, com duração média de 1h30 a 2h30. Utilizamos preferencialmente abordagens minimamente invasivas.</p>
-            <ul>
-              <li>Planejamento digital pré-operatório com medição precisa dos implantes</li>
-              <li>Remoção dos fragmentos articulares danificados</li>
-              <li>Implantação dos componentes protéticos</li>
-              <li>Verificação intraoperatória de estabilidade e alinhamento</li>
-            </ul>
-          </div>
-          <div class="trat-tab-panel">
-            <h4>Recuperação pós-operatória</h4>
-            <ul>
-              <li><strong style="color:var(--cor-azul-claro)">Dias 1–3:</strong> Alta hospitalar, início da deambulação com andador</li>
-              <li><strong style="color:var(--cor-azul-claro)">Semanas 2–6:</strong> Fisioterapia intensiva, abandono progressivo do andador</li>
-              <li><strong style="color:var(--cor-azul-claro)">Mês 2–3:</strong> Marcha independente, retorno às atividades leves</li>
-              <li><strong style="color:var(--cor-azul-claro)">Mês 4–6:</strong> Retorno a atividades físicas moderadas</li>
-            </ul>
-            <a href="#contato" class="trat-cta">Agendar Avaliação →</a>
-          </div>
-        </div>
+<section class="section about" id="sobre">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-image-wrap reveal">
+        <div class="about-image" style="padding:0;overflow:hidden;"><img src="IMG_4906 okok.jpg" alt="Dr. Taiuã Milan" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" /></div>
+        <div class="about-image-frame"></div>
+        <div class="about-credential"><span>CRM/SC 21639</span><span>RQE Nº 15964 · TEOT 16353</span></div>
       </div>
-    </div>
-
-    <!-- Artroscopia -->
-    <div class="trat-item" id="trat-02">
-      <button class="trat-trigger" onclick="toggleTrat('trat-02')">
-        <div class="trat-trigger-left">
-          <span class="trat-num">02</span>
-          <div>
-            <span class="trat-label-tag">Cirurgia Minimamente Invasiva</span>
-            <span class="trat-title">Artroscopia do Quadril</span>
-          </div>
+      <div class="about-content">
+        <div class="reveal">
+          <div class="section-tag"><span>Sobre o Médico</span></div>
+          <h2 class="section-title">Dr. Taiuã Milan —<br><em>Cirurgião Especialista</em> em Quadril</h2>
         </div>
-        <div class="trat-arrow">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </div>
-      </button>
-      <div class="trat-panel">
-        <div class="trat-panel-inner">
-          <div class="trat-tabs">
-            <button class="trat-tab-btn active" onclick="switchTab(this, 0)">O que é</button>
-            <button class="trat-tab-btn" onclick="switchTab(this, 1)">Indicações</button>
-            <button class="trat-tab-btn" onclick="switchTab(this, 2)">Recuperação</button>
-          </div>
-          <div class="trat-tab-panel active">
-            <h4>O que é a Artroscopia do Quadril?</h4>
-            <p>Técnica cirúrgica minimamente invasiva em que uma câmera miniaturizada e instrumentos de precisão são introduzidos na articulação através de pequenas incisões de menos de 1 cm.</p>
-            <p>Permite tratar diretamente estruturas internas como o labrum acetabular, a cartilagem articular e os ligamentos — sem necessidade de abrir a articulação.</p>
-          </div>
-          <div class="trat-tab-panel">
-            <h4>Indicações principais</h4>
-            <ul>
-              <li>Impacto Femoroacetabular (IFA)</li>
-              <li>Lesões do labrum acetabular</li>
-              <li>Condropatias iniciais</li>
-              <li>Corpos livres intra-articulares</li>
-              <li>Afecções da cápsula articular</li>
-            </ul>
-          </div>
-          <div class="trat-tab-panel">
-            <h4>Recuperação</h4>
-            <ul>
-              <li><strong style="color:var(--cor-azul-claro)">Semana 1–2:</strong> Uso de muletas, crioterapia</li>
-              <li><strong style="color:var(--cor-azul-claro)">Semana 3–6:</strong> Fisioterapia ativa, fortalecimento</li>
-              <li><strong style="color:var(--cor-azul-claro)">Mês 2–3:</strong> Marcha normal, atividades leves</li>
-              <li><strong style="color:var(--cor-azul-claro)">Mês 4–6:</strong> Retorno ao esporte recreativo</li>
-            </ul>
-            <a href="#contato" class="trat-cta">Agendar Avaliação →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Fraturas -->
-    <div class="trat-item" id="trat-03">
-      <button class="trat-trigger" onclick="toggleTrat('trat-03')">
-        <div class="trat-trigger-left">
-          <span class="trat-num">03</span>
-          <div>
-            <span class="trat-label-tag">Traumatologia</span>
-            <span class="trat-title">Fraturas do Fêmur e Acetábulo</span>
-          </div>
-        </div>
-        <div class="trat-arrow">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </div>
-      </button>
-      <div class="trat-panel">
-        <div class="trat-panel-inner">
-          <h4>Fraturas do Fêmur Proximal e Acetábulo</h4>
-          <p>As fraturas da região do quadril são lesões graves que afetam principalmente idosos após quedas, mas também adultos jovens em traumas de alta energia. O tratamento cirúrgico precoce é essencial.</p>
-          <ul>
-            <li>Fratura do colo do fêmur</li>
-            <li>Fratura transtrocantérica e subtrocantérica</li>
-            <li>Fratura-luxação do acetábulo</li>
-            <li>Fratura do anel pélvico</li>
-          </ul>
-          <a href="#contato" class="trat-cta">Agendar Avaliação →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Impacto Femoroacetabular -->
-    <div class="trat-item" id="trat-04">
-      <button class="trat-trigger" onclick="toggleTrat('trat-04')">
-        <div class="trat-trigger-left">
-          <span class="trat-num">04</span>
-          <div>
-            <span class="trat-label-tag">Preservação Articular</span>
-            <span class="trat-title">Impacto Femoroacetabular (IFA)</span>
-          </div>
-        </div>
-        <div class="trat-arrow">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </div>
-      </button>
-      <div class="trat-panel">
-        <div class="trat-panel-inner">
-          <h4>O que é o Impacto Femoroacetabular?</h4>
-          <p>Condição em que alterações morfológicas do fêmur proximal e/ou acetábulo geram contato ósseo anormal durante os movimentos do quadril. É uma das principais causas de dor no quadril em adultos jovens e atletas.</p>
-          <ul>
-            <li>Tipo CAM (bossa óssea no colo do fêmur)</li>
-            <li>Tipo PINCER (cobertura excessiva do acetábulo)</li>
-            <li>Tipo misto (combina ambos)</li>
-          </ul>
-          <a href="#contato" class="trat-cta">Agendar Avaliação →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Necrose -->
-    <div class="trat-item" id="trat-05">
-      <button class="trat-trigger" onclick="toggleTrat('trat-05')">
-        <div class="trat-trigger-left">
-          <span class="trat-num">05</span>
-          <div>
-            <span class="trat-label-tag">Condição Óssea</span>
-            <span class="trat-title">Necrose da Cabeça Femoral</span>
-          </div>
-        </div>
-        <div class="trat-arrow">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </div>
-      </button>
-      <div class="trat-panel">
-        <div class="trat-panel-inner">
-          <h4>Necrose Avascular da Cabeça Femoral</h4>
-          <p>Condição em que a interrupção do fluxo sanguíneo para a cabeça do fêmur leva à morte do tecido ósseo. Acomete principalmente adultos entre 30 e 60 anos.</p>
-          <p>Principais fatores de risco:</p>
-          <ul>
-            <li>Uso prolongado de corticosteroides</li>
-            <li>Consumo excessivo de álcool</li>
-            <li>Fratura ou luxação prévia do quadril</li>
-            <li>Doenças hematológicas</li>
-          </ul>
-          <a href="#contato" class="trat-cta">Agendar Avaliação →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Displasia -->
-    <div class="trat-item" id="trat-06">
-      <button class="trat-trigger" onclick="toggleTrat('trat-06')">
-        <div class="trat-trigger-left">
-          <span class="trat-num">06</span>
-          <div>
-            <span class="trat-label-tag">Deformidade & Morfologia</span>
-            <span class="trat-title">Displasia & Discrepância de Membros</span>
-          </div>
-        </div>
-        <div class="trat-arrow">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </div>
-      </button>
-      <div class="trat-panel">
-        <div class="trat-panel-inner">
-          <h4>Displasia do Quadril e Discrepância de Membros</h4>
-          <p>A displasia do quadril é uma condição em que o acetábulo não cobre adequadamente a cabeça femoral, gerando instabilidade e artrose precoce.</p>
-          <p>A discrepância de membros inferiores é a diferença de comprimento entre as pernas, que quando superior a 1,5–2 cm causa alterações de marcha e dor lombar.</p>
-          <a href="#contato" class="trat-cta">Agendar Avaliação →</a>
+        <p class="about-bio reveal reveal-delay-1">Ortopedista e traumatologista com <strong>especialização exclusiva em Cirurgia do Quadril</strong>, o Dr. Taiuã Milan é referência no tratamento de doenças da articulação coxofemoral em Santa Catarina. Graduado em Medicina pela <strong>UNIDERP (2013)</strong>, com residência em Ortopedia e Traumatologia pelo Hospital e Maternidade Marieta Konder Bornhausen e residência avançada em <strong>Cirurgia do Quadril pela Sociedade Hospitalar Angelina Caron (HAC)</strong>.</p>
+        <p class="about-bio reveal reveal-delay-2">Atua com domínio técnico em artroplastia total de quadril primária e de revisão, artroscopia do quadril para impacto femoroacetabular, reconstruções complexas e tratamento de fraturas do fêmur proximal e do acetábulo. Atende em <strong>Português, Inglês e Espanhol</strong>, com consultórios em Itajaí, Balneário Camboriú, Brusque e Joinville.</p>
+        <div class="about-credentials-list reveal reveal-delay-3">
+          <div class="about-cred-item"><div class="about-cred-dot"></div><div class="about-cred-text"><strong>Graduação em Medicina</strong> — UNIDERP · Universidade para o Desenvolvimento do Estado e da Região do Pantanal (2013)</div></div>
+          <div class="about-cred-item"><div class="about-cred-dot"></div><div class="about-cred-text"><strong>Residência Médica em Ortopedia e Traumatologia</strong> — Hospital e Maternidade Marieta Konder Bornhausen (2015–2018)</div></div>
+          <div class="about-cred-item"><div class="about-cred-dot"></div><div class="about-cred-text"><strong>Residência em Cirurgia do Quadril (R4)</strong> — Sociedade Hospitalar Angelina Caron (HAC) (2018–2019)</div></div>
+          <div class="about-cred-item"><div class="about-cred-dot"></div><div class="about-cred-text"><strong>Membro Titular da SBOT</strong> — TEOT 16353 · CRM/SC 21639 · RQE 15964</div></div>
+          <div class="about-cred-item"><div class="about-cred-dot"></div><div class="about-cred-text"><strong>Atuação clínica e cirúrgica</strong> em Itajaí, Balneário Camboriú, Brusque e Joinville — exclusivamente em Santa Catarina</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
+<section class="section specialties" id="especialidades">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-tag"><span>Patologias Tratadas</span></div>
+      <h2 class="section-title" style="color:var(--cream)">Patologias do<br><em>Quadril</em></h2>
+    </div>
+    <div class="spec-grid">
+      <div class="spec-card reveal" onclick="toggleSpec(this)">
+        <div class="spec-header"><div class="spec-header-left"><div><div class="spec-name">Artrose do Quadril (Coxartrose)</div><div class="spec-desc">Degeneração articular progressiva — da abordagem conservadora à artroplastia total</div></div></div><div class="spec-toggle">+</div></div>
+        <div class="spec-body"><div class="spec-body-inner">
+          <div class="spec-nav"><button class="spec-nav-pill">Epidemiologia</button><button class="spec-nav-pill">Fisiopatologia</button><button class="spec-nav-pill">Quadro Clínico</button><button class="spec-nav-pill">Trat. Conservador</button><button class="spec-nav-pill">Trat. Cirúrgico</button><button class="spec-nav-pill">Reabilitação</button></div>
+          <div class="spec-blocks">
+            <div class="spec-block"><div class="spec-block-title">Epidemiologia</div><div class="spec-block-body"><p>A <strong>coxartrose</strong> afeta 3–11% da população acima de 55 anos. No Brasil, representa uma das principais indicações de artroplastia total de quadril, com mais de 50.000 procedimentos anuais. Fatores de risco: idade avançada, obesidade, displasia do quadril, impacto femoroacetabular não tratado, necrose avascular e histórico familiar.</p></div></div>
+            <div class="spec-block"><div class="spec-block-title">Fisiopatologia</div><div class="spec-block-body"><p>Doença <strong>degenerativa progressiva</strong> que compromete cartilagem, osso subcondral, membrana sinovial e cápsula articular. A degradação da matriz cartilaginosa mediada por MMPs e agrecanas reduz a capacidade de absorção de cargas, gerando remodelação óssea, osteófitos e esclerose subcondral. Mediadores inflamatórios (IL-1, TNF-α) perpetuam o ciclo de degradação.</p></div></div>
+            <div class="spec-block"><div class="spec-block-title">Quadro Clínico</div><div class="spec-block-body"><p>Apresentação insidiosa e progressiva:</p><ul><li><strong>Dor na virilha</strong> irradiada para a coxa anterior, joelho e glúteo</li><li><strong>Rigidez matinal</strong> inferior a 30 minutos</li><li><strong>Limitação funcional</strong> — dificuldade para calçar sapatos e entrar em veículos</li><li><strong>Claudicação</strong> e sinal de Trendelenburg</li><li><strong>Encurtamento do membro</strong> nos casos avançados</li></ul><p>Diagnóstico clínico-radiológico (classificação de Kellgren-Lawrence).</p></div></div>
+            <div class="spec-block"><div class="spec-block-title">Tratamento Conservador</div><div class="spec-block-body"><ul><li><strong>Atividade física adaptada</strong> — hidroginástica, ciclismo e caminhada</li><li><strong>Controle de peso</strong> — cada kg reduz 3–5 kg de carga sobre o quadril</li><li><strong>Fisioterapia</strong> — fortalecimento de abdutores e extensores</li><li><strong>Analgésicos e AINEs</strong> em ciclos curtos</li><li><strong>Infiltrações guiadas</strong> — corticoide intra-articular para crises álgicas</li></ul><div class="hbox"><p>A cirurgia é indicada quando o tratamento conservador bem conduzido por 3–6 meses não proporciona alívio satisfatório.</p></div></div></div>
+            <div class="spec-block"><div class="spec-block-title">Tratamento Cirúrgico</div><div class="spec-block-body"><p>A <strong>artroplastia total do quadril (ATQ)</strong> tem satisfação superior a 90%. Realizada pela <strong>abordagem anterior minimamente invasiva (DAA)</strong> — preservando os músculos pelvi-trocantéricos, menor dor pós-operatória, mobilização mais precoce e menor risco de luxação. Implantes de cerâmica e HXPE com durabilidade estimada superior a 25–30 anos.</p></div></div>
+            <div class="spec-block"><div class="spec-block-title">Reabilitação</div><div class="spec-block-body"><ul><li><strong>Dia 1</strong> — deambulação com andador</li><li><strong>2ª–3ª semana</strong> — progressão para bengala</li><li><strong>4ª–6ª semana</strong> — marcha independente; retorno às AVDs</li><li><strong>3º–4º mês</strong> — fortalecimento intensivo; bicicleta ergométrica</li><li><strong>5º–6º mês</strong> — liberação para atividades de baixo impacto</li></ul></div></div>
+          </div>
+          <div class="spec-cta"><a href="#agendamento" class="spec-cta-btn">Agendar Consulta</a><a href="quadril-artrose.html" class="spec-cta-outline">Página completa →</a></div>
+        </div></div>
+      </div>
 
-<!-- FORMAÇÃO -->
-<section id="formacao">
-  <div class="section-head reveal">
-    <span class="label">Trajetória Acadêmica</span>
-    <h2>Formação & Titulações</h2>
-  </div>
+      <div class="spec-card reveal" onclick="toggleSpec(this)">
+        <div class="spec-header"><div class="spec-header-left"><div><div class="spec-name">Impacto Femoroacetabular (FAI)</div><div class="spec-desc">Causa frequente de dor no quadril em jovens e atletas — tratamento artroscópico minimamente invasivo</div></div></div><div class="spec-toggle">+</div></div>
+        <div class="spec-body"><div class="spec-body-inner">
+          <div class="spec-nav"><button class="spec-nav-pill">Epidemiologia</button><button class="spec-nav-pill">Fisiopatologia</button><button class="spec-nav-pill">Quadro Clínico</button><button class="spec-nav-pill">Trat. Conservador</button><button class="spec-nav-pill">Trat. Cirúrgico</button><button class="spec-nav-pill">Reabilitação</button></div>
+          <div class="spec-blocks">
+            <div class="spec-block"><div class="spec-block-title">Epidemiologia</div><div class="spec-block-body"><p>O <strong>FAI</strong> é uma das causas mais comuns de dor no quadril em adultos entre 20 e 50 anos. Alterações morfológicas compatíveis ocorrem em 10–15% da população geral. Prevalência maior em atletas de alto rendimento — futebol, hóquei, golfe, ballet.</p></div></div>
+            <div class="spec-block"><div class="spec-block-title">Fisiopatologia</div><div class="spec-block-body"><p>Contato anormal entre a cabeça femoral e a borda acetabular nos movimentos de flexão e rotação interna. Três subtipos:</p><ul><li><strong>Tipo Cam</strong> — saliência óssea na junção cabeça-colo; lesões cartilaginosas anterossuperiores</li><li><strong>Tipo Pincer</strong> — excesso de cobertura acetabular; lesão labral predominante</li><li><strong>Tipo Misto</strong> — combinação dos dois, mais frequente na prática clínica</li></ul></div></div>
+            <div class="spec-block"><div class="spec-block-title">Quadro Clínico</div><div class="spec-block-body"><p>Dor profunda na virilha desencadeada por flexão do quadril. <strong>Sinal do C</strong> clássico. <strong>Teste FADIR positivo</strong>. Limitação da rotação interna a 0° é achado altamente sugestivo. Diagnóstico confirmado por radiografia (ângulo alfa) e RM com protocolo específico.</p></div></div>
+            <div class="spec-block"><div class="spec-block-title">Tratamento Conservador</div><div class="spec-block-body"><ul><li><strong>Restrição de atividades</strong> provocadoras temporariamente</li><li><strong>Fisioterapia especializada</strong> — core e estabilizadores do quadril</li><li><strong>AINEs</strong> em cursos curtos para crises álgicas</li><li><strong>Infiltração guiada</strong> — valor diagnóstico e terapêutico</li></ul><div class="hbox"><p>A artroscopia é indicada quando o tratamento conservador por 3–6 meses não obtém resultado satisfatório.</p></div></div></div>
+            <div class="spec-block"><div class="spec-block-title">Tratamento Cirúrgico</div><div class="spec-block-body"><p><strong>Artroscopia do quadril</strong> — 2–3 incisões de ~1 cm, sem abertura articular. Inclui osteoplastia femoral (Cam), acetabuloplastia (Pincer), refixação ou desbridamento labral com âncoras bioabsorvíveis, e tratamento das lesões cartilaginosas concomitantes. Alta no mesmo dia ou no dia seguinte.</p></div></div>
+            <div class="spec-block"><div class="spec-block-title">Reabilitação</div><div class="spec-block-body"><ul><li><strong>0–2 semanas</strong> — muletas com carga parcial; mobilidade passiva precoce</li><li><strong>2–6 semanas</strong> — carga progressiva; bicicleta ergométrica sem resistência</li><li><strong>6–12 semanas</strong> — fortalecimento funcional; atividades aquáticas</li><li><strong>3–5 meses</strong> — treino esportivo específico; corrida progressiva</li><li><strong>Retorno ao esporte</strong> — 4 a 6 meses para esportes de contato</li></ul></div></div>
+          </div>
+          <div class="spec-cta"><a href="#agendamento" class="spec-cta-btn">Agendar Consulta</a><a href="quadril-fai.html" class="spec-cta-outline">Página completa →</a></div>
+        </div></div>
+      </div>
 
-  <div class="timeline">
-    <div class="tl-item reveal">
-      <div class="tl-year">2019</div>
-      <div class="tl-title">Subespecialidade em Cirurgia do Quadril</div>
-      <div class="tl-inst">Hospital Angelina Caron — Curitiba, PR</div>
-    </div>
-    <div class="tl-item reveal reveal-d1">
-      <div class="tl-year">2015 – 2018</div>
-      <div class="tl-title">Residência Médica em Ortopedia e Traumatologia</div>
-      <div class="tl-inst">Hospital Marieta Konder Bornhausen — SC</div>
-    </div>
-    <div class="tl-item reveal reveal-d2">
-      <div class="tl-year">2014 – 2015</div>
-      <div class="tl-title">Médico no Hospital Militar de Campo Grande</div>
-      <div class="tl-inst">Hospital Militar de Área de Campo Grande — MS</div>
-    </div>
-    <div class="tl-item reveal reveal-d3">
-      <div class="tl-year">2008 – 2013</div>
-      <div class="tl-title">Graduação em Medicina</div>
-      <div class="tl-inst">UNIDERP — Universidade para o Desenvolvimento do Estado e da Região do Pantanal</div>
+      <div class="spec-card reveal" onclick="toggleSpec(this)">
+        <div class="spec-header"><div class="spec-header-left"><div><div class="spec-name">Artroplastia Total do Quadril</div><div class="spec-desc">Substituição articular com implantes de alta durabilidade — primária e de revisão</div></div></div><div class="spec-toggle">+</div></div>
+        <div class="spec-body"><div class="spec-body-inner">
+          <div class="spec-nav"><button class="spec-nav-pill">Epidemiologia</button><button class="spec-nav-pill">Planejamento</button><button class="spec-nav-pill">Indicação</button><button class="spec-nav-pill">Trat. Conservador</button><button class="spec-nav-pill">Trat. Cirúrgico</button><button class="spec-nav-pill">Reabilitação</button></div>
+          <div class="spec-blocks">
+            <div class="spec-block"><div class="spec-block-title">Epidemiologia</div><div class="spec-block-body"><p>Mais de 400.000 ATQs anuais nos EUA, com projeção de crescimento de 174% até 2030. No Brasil, mais de 50.000 procedimentos anuais. A coxartrose é a indicação primária em 80–85% dos casos.</p></div></div>
+            <div class="spec-block"><div class="spec-block-title">Fisiopatologia e Planejamento</div><div class="spec-block-body"><p>O princípio biomecânico é <strong>restaurar o centro de rotação, o offset femoral e o comprimento do membro</strong>. O planejamento pré-operatório digital — templating sobre radiografias calibradas — é etapa essencial para seleção dos componentes e predição do resultado funcional.</p></div></div>
+            <div class="spec-block"><div class="spec-block-title">Indicação Cirúrgica</div><div class="spec-block-body"><p>A indicação é <strong>clínica e funcional</strong>, nunca exclusivamente radiológica:</p><ul><li>Dor persistente não controlada pelo tratamento conservador por ≥ 3–6 meses</li><li>Limitação funcional nas atividades básicas da vida diária</li><li>Dor noturna que compromete o sono</li><li>Impacto negativo documentado na qualidade de vida</li></ul></div></div>
+            <div class="spec-block"><div class="spec-block-title">Tratamento Conservador Prévio</div><div class="spec-block-body"><ul><li>Fisioterapia — fortalecimento periarticular e propriocepção</li><li>Controle de peso e farmacoterapia (paracetamol, AINEs)</li><li>Infiltrações intra-articulares guiadas</li><li>Auxiliares de marcha (bengala, andador)</li></ul></div></div>
+            <div class="spec-block"><div class="spec-block-title">Tratamento Cirúrgico</div><div class="spec-block-body"><p>Realizado pela <strong>abordagem anterior direta (DAA)</strong> — sem secção muscular. Componentes: cúpula acetabular em titânio poroso; inserto em HXPE ou cerâmica; cabeça femoral em cerâmica de alumina (ZTA); haste femoral em titânio não cimentado.</p></div></div>
+            <div class="spec-block"><div class="spec-block-title">Reabilitação</div><div class="spec-block-body"><ul><li><strong>Dia 0</strong> — sentar à beira do leito; isométricos</li><li><strong>Dia 1</strong> — deambulação com andador; alta hospitalar</li><li><strong>4–6 semanas</strong> — bengala; dirigir; atividades leves</li><li><strong>3º mês</strong> — fortalecimento intensivo; bicicleta; caminhadas</li><li><strong>6º mês</strong> — avaliação para esportes de baixo impacto</li></ul></div></div>
+          </div>
+          <div class="spec-cta"><a href="#agendamento" class="spec-cta-btn">Agendar Consulta</a><a href="quadril-artroplastia.html" class="spec-cta-outline">Página completa →</a></div>
+        </div></div>
+      </div>
+
+      <div class="spec-card reveal" onclick="toggleSpec(this)">
+        <div class="spec-header"><div class="spec-header-left"><div><div class="spec-name">Displasia do Quadril</div><div class="spec-desc">Principal causa de artrose precoce em adultos jovens — preservação articular com osteotomia periacetabular</div></div></div><div class="spec-toggle">+</div></div>
+        <div class="spec-body"><div class="spec-body-inner">
+          <div class="spec-nav"><button class="spec-nav-pill">Epidemiologia</button><button class="spec-nav-pill">Fisiopatologia</button><button class="spec-nav-pill">Quadro Clínico</button><button class="spec-nav-pill">Trat. Conservador</button><button class="spec-nav-pill">Trat. Cirúrgico</button><button class="spec-nav-pill">Reabilitação</button></div>
+          <div class="spec-blocks">
+            <div class="spec-block"><div class="spec-block-title">Epidemiologia</div><div class="spec-block-body"><p>A <strong>displasia do desenvolvimento do quadril (DDQ)</strong> acomete 1–5% da população nas formas moderadas a graves. Mais frequente no sexo feminino (4–8:1), primogênitos e nascidos em apresentação pélvica. Principal causa de artroplastia total de quadril em mulheres abaixo de 60 anos em países do hemisfério norte.</p></div></div>
+            <div class="spec-block"><div class="spec-block-title">Fisiopatologia</div><div class="spec-block-body"><p>A cobertura acetabular insuficiente eleva o <strong>stress de contato por unidade de área</strong>, acelerando a degeneração cartilaginosa — especialmente no quadrante anterolateral. O lábio acetabular assume papel compensatório com risco de lesão por sobrecarga crônica. O <strong>ângulo de Wiberg (CE angle) &lt; 20°</strong> define displasia radiograficamente.</p></div></div>
+            <div class="spec-block"><div class="spec-block-title">Quadro Clínico</div><div class="spec-block-body"><ul><li><strong>Dor na virilha</strong> desencadeada por atividades físicas e caminhadas longas</li><li><strong>Dor lateral</strong> pela sobrecarga dos abdutores</li><li><strong>Instabilidade subjetiva</strong> — sensação de "falseamento"</li><li><strong>Clique e estalido</strong> associados a lesão labral</li></ul></div></div>
+            <div class="spec-block"><div class="spec-block-title">Tratamento Conservador</div><div class="spec-block-body"><p>Tem papel paliativo — não corrige a causa mecânica:</p><ul><li>Fisioterapia — abdutores e controle neuromuscular</li><li>Modificação de atividades de alto impacto</li><li>Controle de peso e analgesia</li><li>Infiltrações guiadas para crises álgicas</li></ul></div></div>
+            <div class="spec-block"><div class="spec-block-title">Tratamento Cirúrgico</div><div class="spec-block-body"><p>A <strong>Osteotomia Periacetabular de Bernese (PAO)</strong> reorienta o acetábulo tridimensionalmente para aumentar a cobertura femoral e reduzir o stress de contato. Indicada para pacientes entre 16 e 45–50 anos com CE angle &lt; 20° e artrose grau ≤ II. A <strong>artroplastia total</strong> é indicada nos casos com artrose avançada secundária.</p></div></div>
+            <div class="spec-block"><div class="spec-block-title">Reabilitação</div><div class="spec-block-body"><ul><li><strong>0–6 semanas</strong> — sem carga no membro operado; mobilidade passiva precoce</li><li><strong>6–12 semanas</strong> — carga progressiva por controle radiográfico</li><li><strong>3º–4º mês</strong> — carga completa; fisioterapia aquática</li><li><strong>6–12 meses</strong> — retorno progressivo a esportes</li></ul></div></div>
+          </div>
+          <div class="spec-cta"><a href="#agendamento" class="spec-cta-btn">Agendar Consulta</a><a href="quadril-displasia.html" class="spec-cta-outline">Página completa →</a></div>
+        </div></div>
+      </div>
+
+      <div class="spec-card reveal" onclick="toggleSpec(this)">
+        <div class="spec-header"><div class="spec-header-left"><div><div class="spec-name">Fraturas e Trauma do Quadril</div><div class="spec-desc">Fêmur proximal, acetábulo e anel pélvico — tratamento cirúrgico precoce como determinante do prognóstico</div></div></div><div class="spec-toggle">+</div></div>
+        <div class="spec-body"><div class="spec-body-inner">
+          <div class="spec-nav"><button class="spec-nav-pill">Epidemiologia</button><button class="spec-nav-pill">Fisiopatologia</button><button class="spec-nav-pill">Quadro Clínico</button><button class="spec-nav-pill">Trat. Conservador</button><button class="spec-nav-pill">Trat. Cirúrgico</button><button class="spec-nav-pill">Reabilitação</button></div>
+          <div class="spec-blocks">
+            <div class="spec-block"><div class="spec-block-title">Epidemiologia</div><div class="spec-block-body"><p>1,6 milhão de casos anuais no mundo, com projeção de triplicar até 2050. <strong>Mortalidade em 1 ano</strong> após fratura do quadril em idosos: 20–35%. Cerca de 50% dos sobreviventes não recuperam o nível funcional prévio.</p></div></div>
+            <div class="spec-block"><div class="spec-block-title">Fisiopatologia</div><div class="spec-block-body"><p>A <strong>fratura do colo do fêmur</strong> em idosos resulta de baixa energia sobre osso osteoporótico. Risco de <strong>necrose avascular</strong> de 30–40% nas fraturas deslocadas (Garden III–IV). As <strong>fraturas acetabulares</strong> são classificadas pelo sistema de Letournel-Judet (10 padrões).</p></div></div>
+            <div class="spec-block"><div class="spec-block-title">Quadro Clínico</div><div class="spec-block-body"><p>Fratura do fêmur proximal em idosos: <strong>dor intensa na virilha após queda</strong>, incapacidade de deambular, encurtamento e rotação externa do membro. Fraturas por insuficiência do colo podem ter apresentação sutil — RM é o exame de escolha. Fraturas acetabulares: TC com reconstrução 3D é indispensável.</p></div></div>
+            <div class="spec-block"><div class="spec-block-title">Tratamento Conservador</div><div class="spec-block-body"><p>Reservado a situações específicas:</p><ul><li>Fraturas não deslocadas (Garden I–II) com alto risco cirúrgico</li><li>Fraturas acetabulares com deslocamento mínimo (&lt; 2 mm)</li><li>Pacientes com expectativa de vida muito limitada</li></ul><div class="hbox"><p>Na grande maioria dos casos, o tratamento cirúrgico precoce é a melhor opção — reduz mortalidade e previne complicações do imobilismo.</p></div></div></div>
+            <div class="spec-block"><div class="spec-block-title">Tratamento Cirúrgico</div><div class="spec-block-body"><p>Princípio: <strong>operar nas primeiras 24–48 horas</strong> em idosos.</p><ul><li><strong>Colo não deslocado</strong> — parafusos canulados ou DHS</li><li><strong>Colo deslocado em idosos</strong> — hemiartroplastia ou ATQ total</li><li><strong>Colo deslocado em jovens</strong> — redução e fixação interna</li><li><strong>Transtrocanteriana</strong> — haste cefalomedular (nail)</li><li><strong>Acetábulo</strong> — redução e fixação interna com placas e parafusos</li></ul></div></div>
+            <div class="spec-block"><div class="spec-block-title">Reabilitação</div><div class="spec-block-body"><ul><li><strong>Dia 1</strong> — sentar à beira do leito; fisioterapia respiratória; anticoagulação</li><li><strong>Semana 1</strong> — deambulação com andador</li><li><strong>2–6 semanas</strong> — progressão para bengala; equilíbrio</li><li><strong>2º–3º mês</strong> — marcha independente; programa de prevenção de quedas</li></ul></div></div>
+          </div>
+          <div class="spec-cta"><a href="#agendamento" class="spec-cta-btn">Agendar Consulta</a><a href="quadril-fraturas.html" class="spec-cta-outline">Página completa →</a></div>
+        </div></div>
+      </div>
+
+      <div class="spec-card reveal" onclick="toggleSpec(this)">
+        <div class="spec-header"><div class="spec-header-left"><div><div class="spec-name">Necrose Avascular e Doença de Perthes</div><div class="spec-desc">Comprometimento vascular da cabeça femoral — diagnóstico precoce como fator prognóstico determinante</div></div></div><div class="spec-toggle">+</div></div>
+        <div class="spec-body"><div class="spec-body-inner">
+          <div class="spec-nav"><button class="spec-nav-pill">Epidemiologia</button><button class="spec-nav-pill">Fisiopatologia</button><button class="spec-nav-pill">Quadro Clínico</button><button class="spec-nav-pill">Trat. Conservador</button><button class="spec-nav-pill">Trat. Cirúrgico</button><button class="spec-nav-pill">Reabilitação</button></div>
+          <div class="spec-blocks">
+            <div class="spec-block"><div class="spec-block-title">Epidemiologia</div><div class="spec-block-body"><p>A <strong>necrose avascular da cabeça femoral (NACF)</strong> é responsável por ~10% das artroplastias totais de quadril no mundo. Predomina em adultos entre 30–60 anos. Fatores de risco: <strong>corticosteroides crônicos</strong> (30–40% dos casos), etilismo, doença falciforme, lúpus, coagulopatias, radioterapia e trauma. A <strong>doença de Legg-Calvé-Perthes (DLCP)</strong> acomete principalmente meninos entre 4 e 12 anos.</p></div></div>
+            <div class="spec-block"><div class="spec-block-title">Fisiopatologia</div><div class="spec-block-body"><p>A interrupção do fluxo sanguíneo à cabeça femoral desencadeia morte dos osteócitos, reabsorção óssea e, sem tratamento, <strong>colapso subcondral</strong> evoluindo para artrose. A localização anterossuperior (maior carga mecânica) explica a progressão. Na DLCP, o potencial de reparação é maior pela plasticidade do esqueleto imaturo.</p></div></div>
+            <div class="spec-block"><div class="spec-block-title">Quadro Clínico</div><div class="spec-block-body"><p>Sintomas iniciais frequentemente <strong>ausentes ou insidiosos</strong> nos estágios precoces. Dor na virilha de início gradual, progressiva com o colapso. A <strong>ressonância magnética</strong> detecta a necrose semanas a meses antes da radiografia — sinal em "double line" é patognomônico. Na DLCP: claudicação, dor inguinal ou no joelho (referida), limitação de abdução e rotação interna.</p></div></div>
+            <div class="spec-block"><div class="spec-block-title">Tratamento Conservador</div><div class="spec-block-body"><ul><li><strong>Restrição de carga</strong> com muletas para reduzir sobrecarga</li><li><strong>Eliminação de fatores de risco</strong> — suspensão de corticoides, cessação do etilismo</li><li><strong>Medicamentoso</strong> — bifosfonatos e estatinas têm evidências limitadas em estágios iniciais</li></ul><p>Na DLCP em menores de 6–8 anos: fisioterapia para manutenção de abdução, órteses de contenção, restrição de impacto.</p></div></div>
+            <div class="spec-block"><div class="spec-block-title">Tratamento Cirúrgico</div><div class="spec-block-body"><p><strong>Estágios iniciais (I–II, sem colapso):</strong></p><ul><li><strong>Descompressão do núcleo</strong> (core decompression)</li><li><strong>Enxerto ósseo vascularizado</strong> — fíbula vascularizada em casos selecionados</li></ul><p><strong>Estágios avançados (III–IV):</strong></p><ul><li><strong>Artroplastia total do quadril</strong> — tratamento definitivo</li></ul></div></div>
+            <div class="spec-block"><div class="spec-block-title">Reabilitação</div><div class="spec-block-body"><ul><li><strong>Após descompressão</strong> — carga parcial com muletas por 6–8 semanas; RM de controle a cada 3–6 meses</li><li><strong>Após ATQ</strong> — alta em 1–2 dias, bengala até 6 semanas, fisioterapia por 3–6 meses</li><li><strong>Na DLCP</strong> — fisioterapia contínua durante toda a fase ativa (1–3 anos)</li></ul><div class="hbox"><p>O diagnóstico antes do colapso é o fator prognóstico mais importante. Pacientes com fatores de risco devem realizar RM ao primeiro sinal de dor inguinal, mesmo com radiografia normal.</p></div></div></div>
+          </div>
+          <div class="spec-cta"><a href="#agendamento" class="spec-cta-btn">Agendar Consulta</a><a href="quadril-necrose.html" class="spec-cta-outline">Página completa →</a></div>
+        </div></div>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- DEPOIMENTOS -->
-<section id="depoimentos">
-  <div class="section-head reveal">
-    <span class="label">O que dizem os pacientes</span>
-    <h2>Depoimentos Verificados</h2>
-  </div>
-
-  <div class="dep-grid">
-    <div class="dep-card reveal">
-      <div class="dep-stars">★ ★ ★ ★ ★</div>
-      <div class="dep-quote">"</div>
-      <p class="dep-text">Fiz uma cirurgia de quadril e no dia seguinte já estava andando com ajuda do andador. Fiquei impressionado com a recuperação. Recuperei minha qualidade de vida.</p>
-      <div class="dep-author">Edemilson W. · Verificado · Fev 2024</div>
+<section class="section procedures" id="procedimentos">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-tag"><span>Procedimentos</span></div>
+      <h2 class="section-title"><em>Técnicas Cirúrgicas</em></h2>
     </div>
-    <div class="dep-card reveal reveal-d2">
-      <div class="dep-stars">★ ★ ★ ★ ★</div>
-      <div class="dep-quote">"</div>
-      <p class="dep-text">Dr. Taiuã foi super atencioso, pontual, esclareceu dúvidas e resolveu o problema de forma precisa. Parabéns ao profissional.</p>
-      <div class="dep-author">Ana C. T. · Verificado · Nov 2020</div>
-    </div>
-    <div class="dep-card reveal reveal-d4">
-      <div class="dep-stars">★ ★ ★ ★ ★</div>
-      <div class="dep-quote">"</div>
-      <p class="dep-text">Conduziu dois procedimentos cirúrgicos de alta complexidade no meu acetábulo. Minha recuperação está sendo ótima. Profissional, atencioso e passou muita confiança.</p>
-      <div class="dep-author">Lídia T. P. · Verificado · Nov 2020</div>
+    <div class="proc-layout">
+      <div class="proc-sidebar reveal">
+        <button class="proc-tab active" onclick="showProc('artroscopia', this)">Artroscopia do Quadril</button>
+        <button class="proc-tab" onclick="showProc('artroplastia', this)">Artroplastia Total</button>
+        <button class="proc-tab" onclick="showProc('revisao', this)">Cirurgia de Revisão</button>
+        <button class="proc-tab" onclick="showProc('fraturas', this)">Tratamento de Fraturas</button>
+        <button class="proc-tab" onclick="showProc('tendinite', this)">Tendinite Glútea e Bursite</button>
+        <button class="proc-tab" onclick="showProc('infiltracao', this)">Infiltrações Guiadas</button>
+      </div>
+      <div class="proc-content-area reveal reveal-delay-2">
+        <div class="proc-panel active" id="proc-artroscopia">
+          <div class="proc-panel-title">Artroscopia do Quadril</div>
+          <p class="proc-panel-desc">Procedimento minimamente invasivo para diagnóstico e tratamento de lesões do lábio acetabular, impacto femoroacetabular (FAI), corpos livres e sinovite.</p>
+          <div class="proc-details">
+            <div class="proc-detail-card"><div class="proc-detail-label">Internação</div><div class="proc-detail-value">Ambulatorial</div><div class="proc-detail-sub">Alta no mesmo dia</div></div>
+            <div class="proc-detail-card"><div class="proc-detail-label">Recuperação</div><div class="proc-detail-value">4–8 semanas</div><div class="proc-detail-sub">Retorno ao esporte: 4–6 meses</div></div>
+            <div class="proc-detail-card"><div class="proc-detail-label">Anestesia</div><div class="proc-detail-value">Raquidiana</div><div class="proc-detail-sub">Sedação complementar</div></div>
+            <div class="proc-detail-card"><div class="proc-detail-label">Indicações</div><div class="proc-detail-value">FAI, Lesão Labral</div><div class="proc-detail-sub">Corpos livres, sinovite</div></div>
+          </div>
+        </div>
+        <div class="proc-panel" id="proc-artroplastia">
+          <div class="proc-panel-title">Artroplastia Total do Quadril</div>
+          <p class="proc-panel-desc">Substituição completa da articulação por implantes de alta tecnologia — cerâmica, polietileno de alta resistência e ligas de titânio.</p>
+          <div class="proc-details">
+            <div class="proc-detail-card"><div class="proc-detail-label">Internação</div><div class="proc-detail-value">1–2 dias</div><div class="proc-detail-sub">Protocolo Fast-Track</div></div>
+            <div class="proc-detail-card"><div class="proc-detail-label">Durabilidade</div><div class="proc-detail-value">25–30 anos</div><div class="proc-detail-sub">Implantes premium certificados</div></div>
+            <div class="proc-detail-card"><div class="proc-detail-label">Marcha</div><div class="proc-detail-value">No 1º dia</div><div class="proc-detail-sub">Com auxílio de andador</div></div>
+            <div class="proc-detail-card"><div class="proc-detail-label">Alta completa</div><div class="proc-detail-value">3–6 meses</div><div class="proc-detail-sub">Atividades normais</div></div>
+          </div>
+        </div>
+        <div class="proc-panel" id="proc-revisao">
+          <div class="proc-panel-title">Cirurgia de Revisão Protética</div>
+          <p class="proc-panel-desc">Troca ou correção de próteses com falha por frouxidão asséptica, infecção periprotética, instabilidade ou desgaste de componentes.</p>
+          <div class="proc-details">
+            <div class="proc-detail-card"><div class="proc-detail-label">Planejamento</div><div class="proc-detail-value">Pré-op. Digital</div><div class="proc-detail-sub">Imagens 3D e templates</div></div>
+            <div class="proc-detail-card"><div class="proc-detail-label">Implantes</div><div class="proc-detail-value">Componentes de revisão</div><div class="proc-detail-sub">Alta fixação primária</div></div>
+            <div class="proc-detail-card"><div class="proc-detail-label">Internação</div><div class="proc-detail-value">3–5 dias</div><div class="proc-detail-sub">Conforme complexidade</div></div>
+            <div class="proc-detail-card"><div class="proc-detail-label">Recuperação</div><div class="proc-detail-value">4–6 meses</div><div class="proc-detail-sub">Fisioterapia intensiva</div></div>
+          </div>
+        </div>
+        <div class="proc-panel" id="proc-fraturas">
+          <div class="proc-panel-title">Tratamento Cirúrgico de Fraturas</div>
+          <p class="proc-panel-desc">Tratamento das fraturas do fêmur proximal, acetábulo e anel pélvico. Redução e fixação interna ou substituição protética conforme perfil do paciente.</p>
+          <div class="proc-details">
+            <div class="proc-detail-card"><div class="proc-detail-label">Urgência</div><div class="proc-detail-value">Cirurgia precoce</div><div class="proc-detail-sub">Idealmente em 24–48h</div></div>
+            <div class="proc-detail-card"><div class="proc-detail-label">Técnicas</div><div class="proc-detail-value">Fixação ou Prótese</div><div class="proc-detail-sub">Conforme o tipo de fratura</div></div>
+            <div class="proc-detail-card"><div class="proc-detail-label">Carga</div><div class="proc-detail-value">Liberação gradual</div><div class="proc-detail-sub">Conforme consolidação</div></div>
+            <div class="proc-detail-card"><div class="proc-detail-label">Reabilitação</div><div class="proc-detail-value">Fisioterapia precoce</div><div class="proc-detail-sub">Início no pós-op imediato</div></div>
+          </div>
+        </div>
+        <div class="proc-panel" id="proc-tendinite">
+          <div class="proc-panel-title">Tendinite Glútea, Bursite e Síndrome do Piriforme</div>
+          <p class="proc-panel-desc">Diagnóstico e tratamento das afecções do mecanismo abdutor do quadril. Abordagem progressiva: conservadora, infiltração guiada ou endoscopia.</p>
+          <div class="proc-details">
+            <div class="proc-detail-card"><div class="proc-detail-label">Diagnóstico</div><div class="proc-detail-value">Imagem + Clínica</div><div class="proc-detail-sub">US e RNM específicos</div></div>
+            <div class="proc-detail-card"><div class="proc-detail-label">Tratamento inicial</div><div class="proc-detail-value">Conservador</div><div class="proc-detail-sub">Fisio + medicação + infiltração</div></div>
+            <div class="proc-detail-card"><div class="proc-detail-label">Cirurgia</div><div class="proc-detail-value">Endoscopia</div><div class="proc-detail-sub">Casos refratários selecionados</div></div>
+            <div class="proc-detail-card"><div class="proc-detail-label">Recuperação</div><div class="proc-detail-value">6–12 semanas</div><div class="proc-detail-sub">Conforme abordagem</div></div>
+          </div>
+        </div>
+        <div class="proc-panel" id="proc-infiltracao">
+          <div class="proc-panel-title">Infiltrações Guiadas</div>
+          <p class="proc-panel-desc">Procedimentos injetáveis guiados por ultrassom ou fluoroscopia para alívio da dor e redução inflamatória em casos selecionados.</p>
+          <div class="proc-details">
+            <div class="proc-detail-card"><div class="proc-detail-label">Procedimento</div><div class="proc-detail-value">Ambulatorial</div><div class="proc-detail-sub">30 minutos</div></div>
+            <div class="proc-detail-card"><div class="proc-detail-label">Guiagem</div><div class="proc-detail-value">Ultrassom / RX</div><div class="proc-detail-sub">Máxima precisão e segurança</div></div>
+            <div class="proc-detail-card"><div class="proc-detail-label">Substâncias</div><div class="proc-detail-value">Corticoide / Hialurônico</div><div class="proc-detail-sub">Conforme indicação clínica</div></div>
+            <div class="proc-detail-card"><div class="proc-detail-label">Duração do efeito</div><div class="proc-detail-value">3–12 meses</div><div class="proc-detail-sub">Resultado variável individual</div></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- LOCAIS -->
-<section id="locais">
-  <div class="section-head reveal">
-    <span class="label">Onde me encontrar</span>
-    <h2>Locais de Atendimento</h2>
+<section class="section differentials" id="diferenciais">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-tag"><span>Por que escolher o Dr. Taiuã</span></div>
+      <h2 class="section-title">Diferenciais de um<br><em>Atendimento Especializado</em></h2>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-item reveal"><div class="diff-number">01</div><span class="diff-icon">🎯</span><div class="diff-title">Subespecialidade Exclusiva em Quadril</div><p class="diff-desc">Com residência específica em Cirurgia do Quadril pela Sociedade Hospitalar Angelina Caron, o Dr. Taiuã concentra toda sua atuação clínica e cirúrgica nessa articulação.</p></div>
+      <div class="diff-item reveal reveal-delay-1"><div class="diff-number">02</div><span class="diff-icon">🔬</span><div class="diff-title">Medicina Baseada em Evidências</div><p class="diff-desc">Tomada de decisão fundamentada na literatura científica atual. Indicação cirúrgica criteriosa — cada tratamento é individualizado e justificado com racional fisiopatológico claro.</p></div>
+      <div class="diff-item reveal reveal-delay-2"><div class="diff-number">03</div><span class="diff-icon">🌍</span><div class="diff-title">Atendimento Multilíngue</div><p class="diff-desc">Consultas disponíveis em Português, Inglês e Espanhol — especialmente relevante para a região de Balneário Camboriú e Itajaí, com grande presença de pacientes internacionais.</p></div>
+      <div class="diff-item reveal reveal-delay-3"><div class="diff-number">04</div><span class="diff-icon">📍</span><div class="diff-title">Cobertura Estratégica em Santa Catarina</div><p class="diff-desc">Quatro consultórios distribuídos estrategicamente: Itajaí, Balneário Camboriú, Brusque e Joinville — facilitando o acesso ao cuidado especializado.</p></div>
+      <div class="diff-item reveal"><div class="diff-number">05</div><span class="diff-icon">💊</span><div class="diff-title">Protocolo Fast-Track Pós-Operatório</div><p class="diff-desc">Reabilitação acelerada com fisioterapia precoce, controle multimodal da dor e mobilização no primeiro dia após a cirurgia — reduzindo internação e tempo de afastamento.</p></div>
+      <div class="diff-item reveal reveal-delay-1"><div class="diff-number">06</div><span class="diff-icon">👤</span><div class="diff-title">Consultas sem Pressa, com Clareza</div><p class="diff-desc">Cada paciente recebe tempo e atenção para compreender seu diagnóstico e as opções de tratamento. Atendimento humanizado com linguagem acessível em todas as etapas.</p></div>
+    </div>
   </div>
-
-  <div class="locais-grid">
-    <div class="local-card reveal">
-      <div class="local-icon">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      </div>
-      <div class="local-city">Balneário Camboriú</div>
-      <div class="local-name">Clínica Orthoprime</div>
-      <div class="local-addr">Av. do Estado Dalmo Vieira, 871<br>Centro · Balneário Camboriú · SC</div>
-    </div>
-    
-    <div class="local-card reveal reveal-d1">
-      <div class="local-icon">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      </div>
-      <div class="local-city">Joinville</div>
-      <div class="local-name">Hospital Dona Helena</div>
-      <div class="local-addr">Av. Dr. João Colin, 111<br>Joinville · SC</div>
-    </div>
-    
-    <div class="local-card reveal reveal-d3">
-      <div class="local-icon">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      </div>
-      <div class="local-city">Brusque</div>
-      <div class="local-name">Clínica Ortocentro</div>
-      <div class="local-addr">Brusque · SC</div>
-    </div>
-
-<div class="divider"></div>
-
-<!-- CONTATO -->
-<section id="contato">
-  <div class="contato-info reveal">
-    <span class="label">Contato</span>
-    <h2>Agende sua <em>consulta</em></h2>
-    <p>Atendo pacientes que buscam diagnóstico preciso, segunda opinião ou indicação cirúrgica. O cuidado começa com uma boa conversa.</p>
-
-    <div class="contact-items">
-      <a href="https://wa.me/5547984973346" class="contact-item" target="_blank">
-        <div class="ci-icon">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        </div>
-        WhatsApp · (47) 98497-3346
-      </a>
-      
-      <a href="mailto:contato@drtaiuamilan.com.br" class="contact-item">
-        <div class="ci-icon">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        </div>
-        contato@drtaiuamilan.com.br
-      </a>
-      
-      <a href="tel:4733603711" class="contact-item">
-        <div class="ci-icon">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-        </div>
-        Orthoprime · (47) 3360-3711
-      </a>
-    </div>
-
-    <a href="https://instagram.com/drtaiuamilan" target="_blank" class="instagram-link">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-      @drtaiuamilan
-    </a>
-  </div>
-
-  <form class="contato-form reveal reveal-d2" action="https://formspree.io/f/SEU_ID_AQUI" method="POST">
-    <div class="ff">
-      <label>Nome completo</label>
-      <input type="text" name="nome" placeholder="Seu nome" required>
-    </div>
-    <div class="ff">
-      <label>WhatsApp</label>
-      <input type="tel" name="whatsapp" placeholder="(XX) XXXXX-XXXX" required>
-    </div>
-    <div class="ff">
-      <label>Local de preferência</label>
-      <select name="local" required>
-        <option value="">Selecione uma unidade…</option>
-        <option>Clínica Orthoprime — Balneário Camboriú</option>
-        <option>Hospital Dona Helena — Joinville</option>
-        <option>CLINIPAM — Joinville</option>
-        <option>Clínica Ortocentro — Brusque</option>
-        <option>CLINIPAM — Itajaí</option>
-        <option>Teleconsulta</option>
-      </select>
-    </div>
-    <div class="ff">
-      <label>Motivo da consulta</label>
-      <textarea name="mensagem" placeholder="Descreva brevemente sua queixa ou dúvida…" required></textarea>
-    </div>
-    <button type="submit" class="btn-submit">Enviar Mensagem</button>
-  </form>
 </section>
 
-<!-- FOOTER -->
+<section class="section offices" id="consultorios">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-tag"><span>Onde Atendo</span></div>
+      <h2 class="section-title" style="color:var(--cream)">Consultórios em<br><em>Santa Catarina</em></h2>
+    </div>
+    <div class="offices-grid">
+      <div class="office-card reveal reveal-delay-1" id="office-bc">
+        <div class="office-city">📍 Balneário Camboriú</div>
+        <div class="office-clinic">OrthoPrime BC</div>
+        <div class="office-address">Av. do Estado Dalmo Vieira, 871<br>Praia dos Amores · BC/SC — 88331-490</div>
+        <div class="office-contact-divider"></div>
+        <div class="office-contacts">
+          <div class="office-contact-row"><span class="office-contact-label">Telefone</span><a href="tel:554733603711" class="office-contact-value">(47) 3360-3711</a></div>
+          <div class="office-contact-row"><span class="office-contact-label">WhatsApp</span><a href="https://api.whatsapp.com/send?phone=554733603711&text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20na%20OrthoPrime%20BC." target="_blank" class="office-contact-value">(47) 3360-3711</a></div>
+          <div class="office-contact-row"><span class="office-contact-label">E-mail</span><a href="/cdn-cgi/l/email-protection#81e2eeeff5e0f5eec1eef3f5e9eef1f3e8ece4e3e2afe2eeecafe3f3" class="office-contact-value"><span class="__cf_email__" data-cfemail="e784888993869388a78895938f8897958e8a828584c984888ac98595">[email&#160;protected]</span></a></div>
+        </div>
+      </div>
+      <div class="office-card reveal reveal-delay-2" id="office-itajai">
+        <div class="office-city">📍 Itajaí</div>
+        <div class="office-clinic">CEM — Centro de Especialidades Médicas</div>
+        <div class="office-address">Rua Estefano José Vanolli, 1190<br>Bairro São Vicente · Itajaí/SC — 88309-202</div>
+        <div class="office-contact-divider"></div>
+        <div class="office-contacts">
+          <div class="office-contact-row"><span class="office-contact-label">Telefone</span><a href="#" class="office-contact-value">Solicitar pelo WhatsApp</a></div>
+          <div class="office-contact-row"><span class="office-contact-label">WhatsApp</span><a href="https://api.whatsapp.com/send?phone=554733495186&text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20no%20CEM%20Itaja%C3%AD." target="_blank" class="office-contact-value">(47) 3349-5186</a></div>
+        </div>
+      </div>
+      <div class="office-card reveal reveal-delay-3" id="office-brusque">
+        <div class="office-city">📍 Brusque</div>
+        <div class="office-clinic">OrtoCentro Brusque</div>
+        <div class="office-address">Anexo ao Hospital Azambuja<br>Brusque/SC</div>
+        <div class="office-contact-divider"></div>
+        <div class="office-contacts">
+          <div class="office-contact-row"><span class="office-contact-label">Site</span><a href="https://www.ortocentrobrusque.com.br" target="_blank" class="office-contact-value">ortocentrobrusque.com.br</a></div>
+          <div class="office-contact-row"><span class="office-contact-label">WhatsApp</span><a href="https://api.whatsapp.com/send?phone=5547984973346&text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20no%20OrtoCentro%20Brusque." target="_blank" class="office-contact-value">(47) 98497-3346</a></div>
+        </div>
+      </div>
+      <div class="office-card reveal reveal-delay-1" id="office-joinville">
+        <div class="office-city">📍 Joinville</div>
+        <div class="office-clinic">Hospital Dona Helena</div>
+        <div class="office-address">Rua Blumenau, 123<br>Joinville/SC</div>
+        <div class="office-contact-divider"></div>
+        <div class="office-contacts">
+          <div class="office-contact-row"><span class="office-contact-label">Hospital</span><a href="tel:554733033000" class="office-contact-value">(47) 3303-3000</a></div>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:28px;font-size:13px;color:rgba(247,243,238,0.35);font-weight:300;text-align:center;">⚠ O Dr. Taiuã Milan não realiza atendimentos pela rede CLINIPAM em nenhuma unidade.</p>
+  </div>
+</section>
+
+<section class="section testimonials" id="depoimentos">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-tag"><span>Depoimentos</span></div>
+      <h2 class="section-title">O que dizem nossos<br><em>Pacientes</em></h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card reveal reveal-delay-1"><span class="test-quote-mark">"</span><p class="test-text">Fiz uma cirurgia de quadril e no dia seguinte já estava andando com andador. Fiquei impressionado com a recuperação. Recuperei minha qualidade de vida. Obrigado Dr. Taiuã.</p><span class="test-stars">★★★★★</span><div class="test-patient"><div class="test-avatar">P</div><div><div class="test-name">Paciente verificado</div><div class="test-info">Artroplastia de Quadril · Balneário Camboriú</div></div></div></div>
+      <div class="test-card reveal reveal-delay-2"><span class="test-quote-mark">"</span><p class="test-text">Médico muito atencioso e competente. Explicou tudo detalhadamente, me deixou segura para o procedimento. O resultado superou todas as minhas expectativas. Recomendo muito!</p><span class="test-stars">★★★★★</span><div class="test-patient"><div class="test-avatar">M</div><div><div class="test-name">Paciente verificada</div><div class="test-info">Cirurgia de Quadril · Itajaí</div></div></div></div>
+      <div class="test-card reveal reveal-delay-3"><span class="test-quote-mark">"</span><p class="test-text">Profissional de excelência. Diagnóstico preciso, conduta clara e cirurgia com resultado excelente. Desde a consulta até o pós-operatório, senti que estava em boas mãos.</p><span class="test-stars">★★★★★</span><div class="test-patient"><div class="test-avatar">C</div><div><div class="test-name">Paciente verificado</div><div class="test-info">Quadril · Santa Catarina</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section faq" id="faq">
+  <div class="section-inner">
+    <div class="faq-layout">
+      <div class="faq-intro reveal">
+        <div class="section-tag"><span>Dúvidas Frequentes</span></div>
+        <h2 class="section-title">Perguntas sobre<br><em>Tratamento e Consulta</em></h2>
+        <p class="faq-intro-text">Respondemos as principais dúvidas dos nossos pacientes. Para questões específicas ao seu caso, agende uma avaliação presencial.</p>
+      </div>
+      <div class="faq-list reveal reveal-delay-2">
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Em quais cidades o Dr. Taiuã atende?<div class="faq-toggle">+</div></button><div class="faq-answer"><div class="faq-answer-inner">O Dr. Taiuã Milan atende exclusivamente em Santa Catarina, com consultórios em Itajaí (CEM), Balneário Camboriú (OrthoPrime BC), Brusque (OrtoCentro Brusque) e Joinville (Hospital Dona Helena). Não há atendimentos pela rede CLINIPAM em nenhuma unidade.</div></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Quando devo procurar um especialista em quadril?<div class="faq-toggle">+</div></button><div class="faq-answer"><div class="faq-answer-inner">Procure um especialista ao sentir dor persistente na virilha, quadril ou nádega por mais de 4–6 semanas; ao ter dificuldade para calçar sapatos, subir escadas ou entrar no carro; quando a dor interferir no sono; ao perceber alteração na marcha.</div></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Quais exames devo trazer para a consulta?<div class="faq-toggle">+</div></button><div class="faq-answer"><div class="faq-answer-inner">Traga todos os exames disponíveis: radiografias em incidência panorâmica de bacia e quadril (frente e perfil de cada lado), ressonância magnética se houver, laudos e relatórios médicos anteriores. Se você ainda não realizou exames, o Dr. Taiuã solicitará os mais adequados durante a consulta.</div></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">A cirurgia de quadril é sempre necessária?<div class="faq-toggle">+</div></button><div class="faq-answer"><div class="faq-answer-inner">Não. A indicação cirúrgica é sempre criteriosa e individualizada. Muitos pacientes se beneficiam de fisioterapia, controle de peso, medicamentos ou infiltrações guiadas antes de considerar cirurgia. A decisão é compartilhada entre médico e paciente após análise completa de cada caso.</div></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Qual a recuperação após a artroplastia total de quadril?<div class="faq-toggle">+</div></button><div class="faq-answer"><div class="faq-answer-inner">Com o protocolo Fast-Track, a maioria dos pacientes caminha no dia seguinte à cirurgia, recebe alta em 1–2 dias e retorna ao trabalho em escritório em 4–6 semanas. Atividades de maior impacto são liberadas progressivamente entre 3 e 6 meses.</div></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">O Dr. Taiuã atende convênios médicos?<div class="faq-toggle">+</div></button><div class="faq-answer"><div class="faq-answer-inner">As formas de pagamento e convênios aceitos variam conforme a unidade de atendimento. Consultas particulares são aceitas em todos os locais, com emissão de recibo para reembolso. Entre em contato com o consultório de preferência para verificar disponibilidade e convênios aceitos na sua cidade.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section booking" id="agendamento">
+  <div class="booking-bg"></div>
+  <div class="booking-inner">
+    <div class="booking-left reveal">
+      <div class="section-tag"><span>Agende sua Consulta</span></div>
+      <h2 class="section-title" style="color:var(--cream)">O Primeiro Passo para<br><em>Viver Sem Dor no Quadril</em></h2>
+      <div class="booking-perks">
+        <div class="booking-perk"><div class="booking-perk-icon">🕐</div><div class="booking-perk-text"><strong>Consulta dedicada ao seu caso</strong> — tempo para ouvir, examinar e explicar com clareza</div></div>
+        <div class="booking-perk"><div class="booking-perk-icon">📋</div><div class="booking-perk-text"><strong>Análise completa dos seus exames</strong> — avaliação detalhada de toda documentação prévia</div></div>
+        <div class="booking-perk"><div class="booking-perk-icon">🤝</div><div class="booking-perk-text"><strong>Plano de tratamento claro</strong> — conservador ou cirúrgico, sempre com justificativa</div></div>
+        <div class="booking-perk"><div class="booking-perk-icon">📍</div><div class="booking-perk-text"><strong>Escolha sua cidade</strong> — Itajaí, Balneário Camboriú, Brusque ou Joinville</div></div>
+      </div>
+    </div>
+    <form class="booking-form reveal reveal-delay-2" id="bookingForm" name="agendamento" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="return submitBooking(event)" novalidate>
+      <input type="hidden" name="form-name" value="agendamento">
+      <p style="display:none"><label>Não preencher: <input name="bot-field"></label></p>
+      <div class="form-title">Solicitar Agendamento</div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label" for="bf-nome">Nome Completo</label><input id="bf-nome" name="nome" type="text" class="form-input" placeholder="Seu nome" required autocomplete="name"></div>
+        <div class="form-group"><label class="form-label" for="bf-tel">Telefone / WhatsApp</label><input id="bf-tel" name="telefone" type="tel" class="form-input" placeholder="(47) 99999-9999" required autocomplete="tel"></div>
+      </div>
+      <div class="form-group"><label class="form-label" for="bf-cidade">Cidade de Preferência</label><select id="bf-cidade" name="cidade" class="form-input" required><option value="" disabled selected>Selecione a cidade</option><option value="bc">Balneário Camboriú — OrthoPrime BC</option><option value="itajai">Itajaí — CEM</option><option value="brusque">Brusque — OrtoCentro</option></select></div>
+      <div class="form-group"><label class="form-label" for="bf-motivo">Motivo da Consulta</label><select id="bf-motivo" name="motivo" class="form-input" required><option value="" disabled selected>Selecione o motivo</option><option>Dor no quadril / virilha</option><option>Artrose do quadril</option><option>Impacto femoroacetabular (FAI)</option><option>Revisão de prótese de quadril</option><option>Fratura do quadril / fêmur</option><option>Displasia do quadril</option><option>Necrose da cabeça femoral</option><option>Tendinite glútea / bursite</option><option>Segunda opinião</option><option>Outro</option></select></div>
+      <div class="form-group"><label class="form-label" for="bf-periodo">Período Preferido</label><select id="bf-periodo" name="periodo" class="form-input" required><option value="" disabled selected>Selecione</option><option>Manhã (8h – 12h)</option><option>Tarde (13h – 17h)</option><option>Qualquer horário</option></select></div>
+      <div id="bf-error" role="alert" style="display:none;color:#ff8e8e;font-size:13px;margin-bottom:14px;font-weight:300"></div>
+      <button type="submit" class="form-submit">Solicitar Agendamento →</button>
+      <p style="font-size:11px;color:rgba(247,243,238,0.45);margin-top:14px;line-height:1.6">Ao enviar, você será direcionado ao WhatsApp da clínica escolhida com a mensagem pronta. Joinville (Hospital Dona Helena) → agendamento direto pelo hospital.</p>
+    </form>
+  </div>
+</section>
+
 <footer>
-  <p>© 2025 Dr. Taiuã Milan — CRM/SC 21639</p>
-  <div class="footer-brand">Ortopedia · Cirurgia do Quadril</div>
-  <p>Santa Catarina, Brasil</p>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand-name">Dr. Taiuã Vardasca Milan</div>
+      <div class="footer-brand-title">Ortopedista · Cirurgião do Quadril</div>
+      <div class="footer-crm">CRM/SC 21639 · RQE Nº 15964 · TEOT 16353</div>
+      <p class="footer-bio">Especialista exclusivo em cirurgia do quadril, com atuação em Itajaí, Balneário Camboriú, Brusque e Joinville — Santa Catarina.</p>
+      <div class="footer-socials">
+        <a href="https://www.facebook.com/drtaiuamilan/" class="footer-social" target="_blank">fb</a>
+        <a href="#" class="footer-social">ig</a>
+        <a href="#" class="footer-social">yt</a>
+        <a href="#" class="footer-social">in</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Patologias</div>
+      <ul class="footer-links">
+        <li><a href="quadril-artrose.html">Artrose do Quadril</a></li>
+        <li><a href="quadril-fai.html">Impacto Femoroacetabular</a></li>
+        <li><a href="quadril-artroplastia.html">Artroplastia Total</a></li>
+        <li><a href="quadril-displasia.html">Displasia do Quadril</a></li>
+        <li><a href="quadril-fraturas.html">Fraturas e Trauma</a></li>
+        <li><a href="quadril-necrose.html">Necrose Avascular</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Consultórios</div>
+      <ul class="footer-links">
+        <li><a href="#office-bc">Balneário Camboriú</a></li>
+        <li><a href="#office-itajai">Itajaí</a></li>
+        <li><a href="#office-brusque">Brusque</a></li>
+        <li><a href="#office-joinville">Joinville</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Navegação</div>
+      <ul class="footer-links">
+        <li><a href="#sobre">Sobre o Dr. Taiuã</a></li>
+        <li><a href="#procedimentos">Técnicas Cirúrgicas</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#faq">Perguntas Frequentes</a></li>
+        <li><a href="#agendamento">Agendar Consulta</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Dr. Taiuã Vardasca Milan — CRM/SC 21639 · RQE 15964. Todos os direitos reservados.</p>
+    <ul class="footer-bottom-links">
+      <li><a href="#">Política de Privacidade</a></li>
+      <li><a href="#">Termos de Uso</a></li>
+      <li><a href="#">LGPD</a></li>
+    </ul>
+  </div>
 </footer>
 
-<!-- SCRIPTS -->
-<script>
-  // Reveal ao scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) e.target.classList.add('visible');
-    });
-  }, { threshold: 0.08 });
-  
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+<a href="https://api.whatsapp.com/send?phone=554733603711&text=Olá%2C%20gostaria%20de%20agendar%20uma%20consulta%20com%20o%20Dr.%20Taiuã%20Milan." class="whatsapp-float" target="_blank" title="WhatsApp">💬</a>
 
-  // Accordion
-  function toggleTrat(id) {
-    const item = document.getElementById(id);
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  function toggleSpec(card) {
+    const isOpen = card.classList.contains('open');
+    document.querySelectorAll('.spec-card').forEach(c => c.classList.remove('open'));
+    if (!isOpen) {
+      card.classList.add('open');
+      setTimeout(() => {
+        const y = card.getBoundingClientRect().top + window.scrollY - 100;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }, 80);
+    }
+  }
+  document.querySelectorAll('.city-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (!target) return;
+      document.querySelectorAll('.office-card').forEach(c => c.classList.remove('highlighted'));
+      setTimeout(() => { target.classList.add('highlighted'); }, 400);
+    });
+  });
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => obs.observe(el));
+  function showProc(id, btn) {
+    document.querySelectorAll('.proc-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.proc-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('proc-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
     const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.trat-item').forEach(i => i.classList.remove('open'));
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
     if (!isOpen) item.classList.add('open');
   }
+  
+  function toggleMobileMenu() {
+    const menu = document.getElementById('navMobileMenu');
+    const overlay = document.getElementById('navOverlay');
+    const btn = document.getElementById('navHamburger');
+    const isOpen = menu.classList.contains('active');
+    if (isOpen) {
+      closeMobileMenu();
+    } else {
+      menu.classList.add('active');
+      overlay.classList.add('active');
+      btn.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+  function closeMobileMenu() {
+    document.getElementById('navMobileMenu').classList.remove('active');
+    document.getElementById('navOverlay').classList.remove('active');
+    document.getElementById('navHamburger').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('nav');
+    if (!nav) return;
+    nav.style.height = window.scrollY > 60 ? '66px' : '80px';
+    nav.style.boxShadow = window.scrollY > 60 ? '0 4px 40px rgba(0,0,0,0.35)' : 'none';
+  });
 
-  // Tabs
-  function switchTab(btn, idx) {
-    const panel = btn.closest('.trat-panel-inner');
-    panel.querySelectorAll('.trat-tab-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    panel.querySelectorAll('.trat-tab-panel').forEach((p, i) => {
-      p.classList.toggle('active', i === idx);
-    });
+  /* Solicitação de Agendamento — abre WhatsApp da clínica e registra via Netlify Forms (email) */
+  const CLINIC_WHATSAPP = {
+    bc:      { phone: '554733603711',  name: 'Balneário Camboriú — OrthoPrime BC' },
+    itajai:  { phone: '554733495186',  name: 'Itajaí — CEM' },
+    brusque: { phone: '5547984973346', name: 'Brusque — OrtoCentro' }
+  };
+  function submitBooking(e) {
+    e.preventDefault();
+    const f = e.target;
+    const errBox = document.getElementById('bf-error');
+    errBox.style.display = 'none'; errBox.textContent = '';
+    const data = {
+      nome: f.nome.value.trim(),
+      telefone: f.telefone.value.trim(),
+      cidade: f.cidade.value,
+      motivo: f.motivo.value,
+      periodo: f.periodo.value
+    };
+    if (!data.nome || !data.telefone || !data.cidade || !data.motivo || !data.periodo) {
+      errBox.textContent = 'Por favor preencha todos os campos antes de enviar.';
+      errBox.style.display = 'block';
+      return false;
+    }
+    const clinic = CLINIC_WHATSAPP[data.cidade];
+    if (!clinic) {
+      errBox.textContent = 'Cidade inválida. Tente novamente.';
+      errBox.style.display = 'block';
+      return false;
+    }
+    const motivoText  = f.motivo.options[f.motivo.selectedIndex].text;
+    const periodoText = f.periodo.options[f.periodo.selectedIndex].text;
+    const msg =
+      'Olá! Gostaria de agendar uma consulta com o Dr. Taiuã Milan.\n\n' +
+      '▸ Nome: ' + data.nome + '\n' +
+      '▸ Telefone: ' + data.telefone + '\n' +
+      '▸ Cidade: ' + clinic.name + '\n' +
+      '▸ Motivo: ' + motivoText + '\n' +
+      '▸ Período preferido: ' + periodoText + '\n\n' +
+      'Solicitação enviada via drtaiuamilan.com.br';
+    const whatsappUrl = 'https://api.whatsapp.com/send?phone=' + clinic.phone + '&text=' + encodeURIComponent(msg);
+    /* 1. Email para o doutor via Netlify Forms (background) */
+    try {
+      const fd = new FormData(f);
+      fd.set('cidade', clinic.name);
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(fd).toString()
+      }).catch(function(){});
+    } catch(_) {}
+    /* 2. Abre WhatsApp da clínica correspondente */
+    window.open(whatsappUrl, '_blank', 'noopener');
+    /* 3. Substitui o formulário pela tela de sucesso */
+    f.style.display = 'none';
+    const success = document.createElement('div');
+    success.className = 'booking-form';
+    success.style.cssText = 'background:rgba(247,243,238,0.04);border:1px solid rgba(184,150,62,0.15);padding:48px 44px;text-align:center';
+    success.innerHTML =
+      '<div style="font-size:48px;color:var(--gold-light);margin-bottom:14px;line-height:1">✓</div>' +
+      '<div class="form-title" style="font-size:26px;margin-bottom:14px">Solicitação Enviada</div>' +
+      '<p style="color:rgba(247,243,238,0.7);font-size:14px;line-height:1.7;margin-bottom:10px">Abrimos o WhatsApp da clínica de <strong style="color:var(--cream)">' + clinic.name + '</strong> com sua mensagem pronta. Basta confirmar o envio.</p>' +
+      '<p style="color:rgba(247,243,238,0.55);font-size:13px;line-height:1.7;margin-bottom:22px">Não abriu? <a href="' + whatsappUrl + '" target="_blank" rel="noopener" style="color:var(--gold-light);text-decoration:underline">Clique aqui</a> para abrir manualmente.</p>' +
+      '<p style="color:rgba(247,243,238,0.45);font-size:12px;line-height:1.6">Sua solicitação também foi registrada por email para o consultório do Dr. Taiuã. Aguarde retorno em breve.</p>';
+    f.parentNode.appendChild(success);
+    return false;
   }
 </script>
-
 </body>
 </html>
